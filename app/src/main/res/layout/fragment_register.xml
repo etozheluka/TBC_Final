@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.LogInFragment"
+    android:background="#28333F">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/signUpImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/login_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/signUpTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:fontFamily="sans-serif-thin"
+        android:text="Sing Up"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpImageView" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/signUpEmail"
+        android:layout_width="274dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/layout_bg"
+        android:ems="10"
+        android:padding="15dp"
+        android:hint="Please enter your E-mail"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        android:textColorHint="#AEA8B2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpTv" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/signUpPassword"
+        android:layout_width="273dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:background="@drawable/layout_bg"
+        android:padding="15dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorHint="#AEA8B2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpEmail" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signUpBtn"
+        android:layout_width="251dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/rounded_btn"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
