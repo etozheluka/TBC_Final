@@ -41,14 +41,5 @@
         app:layout_constraintStart_toEndOf="@+id/ivMenuIcon"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="410dp"
-        android:layout_height="72dp"
-        android:background="#2F3C50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
