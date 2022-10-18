@@ -2,4 +2,7 @@
     <string name="app_name">TBC_Final</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="steps">Steps</string>
+    <string name="service_error">Service Error</string>
+    <string name="steps_format">%d steps</string>
 </resources>
