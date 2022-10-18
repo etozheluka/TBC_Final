@@ -5,4 +5,6 @@
     <string name="steps">Steps</string>
     <string name="service_error">Service Error</string>
     <string name="steps_format">%d steps</string>
+    <string name="_2000">2000</string>
+    <string name="_0">0</string>
 </resources>

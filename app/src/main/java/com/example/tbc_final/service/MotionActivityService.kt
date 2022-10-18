@@ -14,17 +14,19 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.os.ResultReceiver
+import android.util.Log
 import android.util.SparseArray
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.example.tbc_final.MainActivity
 import com.example.tbc_final.R
-import com.example.tbc_final.ui.main.HomeFragment
-import com.example.tbc_final.ui.main.HomeFragment.Companion.RECEIVER_TAG
+import com.example.tbc_final.domain.repository.StepPreferencesRepository
+import com.example.tbc_final.ui.home.HomeFragment
+import com.example.tbc_final.ui.home.HomeFragment.Companion.RECEIVER_TAG
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MotionActivityService: Service() {
@@ -41,6 +43,9 @@ class MotionActivityService: Service() {
     private val job = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.IO + job)
 
+    @Inject
+    lateinit var repository: StepPreferencesRepository
+
     override fun onBind(p0: Intent?): IBinder? {
         return null
     }
@@ -54,6 +59,7 @@ class MotionActivityService: Service() {
         super.onCreate()
         setUpService()
         setUpSensor()
+        Log.d("lukaTester", "onCreate: ${todaySteps}")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -74,6 +80,11 @@ class MotionActivityService: Service() {
     }
 
     private fun setUpSensor() {
+
+        scope.launch {}
+
+        runBlocking { todaySteps =  repository.getStep().getOrNull()?.toInt() ?: 0 }
+
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as? SensorManager ?: throw IllegalStateException(getString(R.string.service_error))
         var stepSensor: Sensor? = null
         stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
@@ -96,7 +107,7 @@ class MotionActivityService: Service() {
 
     private fun setUpService() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager ?: throw java.lang.IllegalStateException(getString(R.string.service_error))
-        val notificationIntent = Intent(this,HomeFragment::class.java)
+        val notificationIntent = Intent(this, HomeFragment::class.java)
         val pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,PendingIntent.FLAG_IMMUTABLE)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -137,7 +148,7 @@ class MotionActivityService: Service() {
     private fun saveEvent() {
         scope.launch {} // ამის გარეშე putStep არ მუშაობს
 
-        runBlocking {  }
+        runBlocking { repository.putStep(todaySteps.toString()) }
 
         for (i in 0 until motionUpdateService.size()) {
             motionUpdateService.valueAt(i).update(currentSteps)
@@ -165,13 +176,12 @@ class MotionActivityService: Service() {
 
     companion object{
         internal const val ACTION_SUBSCRIBE = "ACTION_SUBSCRIBE"
-        internal const val ACTION_START_ACTIVITY = "ACTION_START_ACTIVITY"
-        internal const val ACTION_STOP_ACTIVITY = "ACTION_STOP_ACTIVITY"
-        internal const val ACTION_TOGGLE_ACTIVITY = "ACTION_TOGGLE_ACTIVITY"
-        internal const val KEY_ID = "ID"
+        private const val ACTION_START_ACTIVITY = "ACTION_START_ACTIVITY"
+        private const val ACTION_STOP_ACTIVITY = "ACTION_STOP_ACTIVITY"
+        private const val ACTION_TOGGLE_ACTIVITY = "ACTION_TOGGLE_ACTIVITY"
+        private const val KEY_ID = "ID"
         internal const val KEY_STEPS = "STEPS"
-        internal const val KEY_ACTIVE = "ACTIVE"
-        internal const val KEY_ACTIVITIES = "ACTIVITIES"
+        private const val KEY_ACTIVE = "ACTIVE"
         private const val FOREGROUND_ID = 1488
         private const val CHANNEL_ID = "com.example.tbc_final.CHANNEL_ID"
     }

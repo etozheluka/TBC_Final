@@ -1,24 +1,27 @@
-package com.example.tbc_final.ui.main
+package com.example.tbc_final.ui.home
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.ResultReceiver
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.tbc_final.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.tbc_final.databinding.FragmentHomeBinding
-import com.example.tbc_final.databinding.FragmentMainBinding
 import com.example.tbc_final.service.MotionActivityService
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private var currentSteps: Int = 0
+    private val viewModel: HomeViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -32,6 +35,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeService()
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+           val x = viewModel.getStep().getOrNull().toString().toInt()
+            updateView(x)
+        }
+
     }
 
     private fun subscribeService() {
@@ -53,8 +63,24 @@ class HomeFragment : Fragment() {
 
     private fun updateView(steps: Int) {
         currentSteps = steps
+        binding.apply {
+            stepsCurrent.text = currentSteps.toString()
+            circularProgressBar.setProgressWithAnimation(currentSteps.toFloat())
+        }
+
+
         Toast.makeText(requireContext(), "${steps}", Toast.LENGTH_SHORT).show()
 
+    }
+
+    private fun checkGoal(){
+        if (currentSteps == 20){
+//            viewLifecycleOwner.lifecycleScope.launch {
+//                viewModel.putStep((0).toString())
+//            }
+            Toast.makeText(requireContext(), "asdasasdasd", Toast.LENGTH_SHORT).show()
+
+        }
     }
 
 

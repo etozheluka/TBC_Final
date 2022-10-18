@@ -84,4 +84,10 @@ dependencies {
 
     //Splash screen
     implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    //datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //CircularProgressBar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 }
