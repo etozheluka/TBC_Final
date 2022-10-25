@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHomeBinding
-import com.example.tbc_final.databinding.FragmentLeaderBinding
+import com.example.tbc_final.databinding.FragmentLogInBinding
 
-class LeaderFragment : BaseFragment<FragmentLeaderBinding>(FragmentLeaderBinding::inflate) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
