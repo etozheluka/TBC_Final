@@ -3,6 +3,7 @@ package com.example.tbc_final.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.ResultReceiver
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHomeBinding
 import com.example.tbc_final.service.MotionActivityService
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.math.RoundingMode
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -21,6 +28,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private var currentSteps: Int = 0
+    private var totalStepsCount:Int = 0
     private val viewModel: HomeViewModel by viewModels()
 
 
@@ -36,13 +44,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         subscribeService()
 
-
-        viewLifecycleOwner.lifecycleScope.launch {
-           val x = viewModel.getStep().getOrNull().toString().toInt()
-            updateView(x)
-        }
+        val date = SimpleDateFormat(getString(R.string.dateFormat)).format(Calendar.getInstance().time)
+        binding.date.text = date.toString()
 
     }
+
+
+
 
     private fun subscribeService() {
 
@@ -51,7 +59,7 @@ class HomeFragment : Fragment() {
         i.putExtra(RECEIVER_TAG, object : ResultReceiver(null) {
             override fun onReceiveResult(resultCode: Int, resultData: Bundle) {
                 if (resultCode == 0) {
-                    requireActivity().runOnUiThread { updateView(resultData.getInt(MotionActivityService.KEY_STEPS))}
+                    requireActivity().runOnUiThread { updateView(resultData.getInt(MotionActivityService.KEY_STEPS),resultData.getInt(MotionActivityService.KEY_TOTAL),resultData.getInt(MotionActivityService.KEY_CURRENT))}
 
                 }
             }
@@ -60,27 +68,30 @@ class HomeFragment : Fragment() {
     }
 
 
-
-    private fun updateView(steps: Int) {
+    private fun updateView(steps: Int,total:Int,session:Int) {
         currentSteps = steps
+        totalStepsCount = total
         binding.apply {
+            current.text = session.toString()
+            totalSteps.text = totalStepsCount.toString()
             stepsCurrent.text = currentSteps.toString()
             circularProgressBar.setProgressWithAnimation(currentSteps.toFloat())
+            timeText.text = buildString {
+                append(((totalStepsCount / 7320.0)).toBigDecimal().setScale(1,RoundingMode.UP))
+                append(" H")
+            }
+            distanceText.text = buildString {
+                append((totalStepsCount / 1312.33595801).toBigDecimal().setScale(1,RoundingMode.UP))
+                append(" KM")
+            }
+            caloriesText.text = buildString {
+                append((totalStepsCount * 0.035).toBigDecimal().setScale(1,RoundingMode.UP))
+                append(" Cal")
+            }
+
+
         }
 
-
-        Toast.makeText(requireContext(), "${steps}", Toast.LENGTH_SHORT).show()
-
-    }
-
-    private fun checkGoal(){
-        if (currentSteps == 20){
-//            viewLifecycleOwner.lifecycleScope.launch {
-//                viewModel.putStep((0).toString())
-//            }
-            Toast.makeText(requireContext(), "asdasasdasd", Toast.LENGTH_SHORT).show()
-
-        }
     }
 
 

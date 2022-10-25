@@ -4,19 +4,12 @@ import androidx.lifecycle.ViewModel
 import com.example.tbc_final.domain.use_case.preferences.GetStepUseCase
 import com.example.tbc_final.domain.use_case.preferences.PutStepUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
-@HiltViewModel
-class HomeViewModel @Inject constructor(
-        private val putStepUseCase: PutStepUseCase,
-        private val getStepUseCase: GetStepUseCase
-): ViewModel() {
 
-    suspend fun putStep(
-        step:String
-    ){
-        putStepUseCase.invoke(step)
-    }
+class HomeViewModel (): ViewModel() {
 
-    suspend fun getStep():Result<String> = getStepUseCase.invoke()
+
+
 }

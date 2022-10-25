@@ -31,7 +31,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MotionActivityService: Service() {
     private var todaySteps: Int = 0
+    private var totalSteps: Int = 0
     private var currentSteps: Int = 0
+    private var session:Int = 0
     private var lastSteps = -1
     private var receiver: ResultReceiver? = null
     private lateinit var sensorListener: SensorEventListener
@@ -41,7 +43,7 @@ class MotionActivityService: Service() {
     private var motionUpdateServiceId = 0
 
     private val job = SupervisorJob()
-    private val scope = CoroutineScope(Dispatchers.IO + job)
+    private val scope = CoroutineScope(Dispatchers.Main + job)
 
     @Inject
     lateinit var repository: StepPreferencesRepository
@@ -59,7 +61,6 @@ class MotionActivityService: Service() {
         super.onCreate()
         setUpService()
         setUpSensor()
-        Log.d("lukaTester", "onCreate: ${todaySteps}")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -81,13 +82,17 @@ class MotionActivityService: Service() {
 
     private fun setUpSensor() {
 
-        scope.launch {}
+        scope.launch {
+            todaySteps =  repository.getStep().getOrNull()?.toInt() ?: 0
 
-        runBlocking { todaySteps =  repository.getStep().getOrNull()?.toInt() ?: 0 }
+        }
+        scope.launch {
+            totalSteps = repository.getTotalStep().getOrNull()?.toInt() ?:0
+        }
+
 
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as? SensorManager ?: throw IllegalStateException(getString(R.string.service_error))
-        var stepSensor: Sensor? = null
-        stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        val stepSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
         sensorListener = object : SensorEventListener {
 
             override fun onSensorChanged(event: SensorEvent) {
@@ -141,14 +146,22 @@ class MotionActivityService: Service() {
             lastSteps = value
         }
         todaySteps += value - lastSteps
+        totalSteps += value - lastSteps
+        session += value - lastSteps
         lastSteps = value
         saveEvent()
     }
 
     private fun saveEvent() {
-        scope.launch {} // ამის გარეშე putStep არ მუშაობს
 
-        runBlocking { repository.putStep(todaySteps.toString()) }
+        scope.launch {
+            repository.putStep(todaySteps.toString())
+
+        }
+        scope.launch {
+            repository.putTotalStep(totalSteps.toString())
+        }
+
 
         for (i in 0 until motionUpdateService.size()) {
             motionUpdateService.valueAt(i).update(currentSteps)
@@ -162,13 +175,24 @@ class MotionActivityService: Service() {
         notificationManager.notify(FOREGROUND_ID, notificationBuilder.build())
         receiver?.let {
             val bundle = Bundle()
-            bundle.putInt(KEY_STEPS, todaySteps)
+
+            if (todaySteps > 300){
+                todaySteps = 0
+                runBlocking { repository.putStep(todaySteps.toString()) } //TODO
+                bundle.putInt(KEY_STEPS, todaySteps)
+            }else{
+                bundle.putInt(KEY_STEPS, todaySteps)
+
+            }
+            bundle.putInt(KEY_TOTAL,totalSteps)
+            bundle.putInt(KEY_CURRENT,session)
             for (i in 0 until motionUpdateService.size()) {
                 val motionActivity = motionUpdateService.valueAt(i)
                 val activityBundle = Bundle()
-                activityBundle.putInt(KEY_ID, motionActivity.id)
+                activityBundle.putInt(KEY_ID, motionActivity.id)//???
                 activityBundle.putInt(KEY_STEPS, motionActivity.steps)
-                activityBundle.putBoolean(KEY_ACTIVE, motionActivity.active)
+                activityBundle.putInt(KEY_TOTAL, motionActivity.steps)
+                activityBundle.putBoolean(KEY_ACTIVE, motionActivity.active)//??
             }
             it.send(0, bundle)
         }
@@ -181,6 +205,8 @@ class MotionActivityService: Service() {
         private const val ACTION_TOGGLE_ACTIVITY = "ACTION_TOGGLE_ACTIVITY"
         private const val KEY_ID = "ID"
         internal const val KEY_STEPS = "STEPS"
+        internal const val KEY_CURRENT = "STEPS_CURRENT"
+        internal const val KEY_TOTAL = "TOTAL"
         private const val KEY_ACTIVE = "ACTIVE"
         private const val FOREGROUND_ID = 1488
         private const val CHANNEL_ID = "com.example.tbc_final.CHANNEL_ID"
