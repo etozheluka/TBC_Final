@@ -9,7 +9,13 @@ interface StepPreferencesRepository {
         steps: String
     )
 
+    suspend fun putPoints(
+        points:String
+    )
+
     suspend fun getStep():Result<String>
 
     suspend fun getTotalStep():Result<String>
+
+    suspend fun getPoints():Result<String>
 }

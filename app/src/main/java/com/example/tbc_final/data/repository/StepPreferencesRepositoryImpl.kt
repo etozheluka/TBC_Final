@@ -17,6 +17,16 @@ import javax.inject.Inject
 class StepPreferencesRepositoryImpl @Inject constructor(
     private val stepPreferences: DataStore<Preferences>
 ):StepPreferencesRepository {
+
+    override suspend fun putPoints(points: String) {
+        Result.runCatching {
+            stepPreferences.edit {preferences ->
+                preferences[stringPreferencesKey(KEY_POINTS)] = points
+
+            }
+        }
+    }
+
     override suspend fun putStep(steps: String) {
         Result.runCatching {
             stepPreferences.edit {preferences ->
@@ -69,8 +79,26 @@ class StepPreferencesRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getPoints(): Result<String> {
+        return Result.runCatching {
+            val flow = stepPreferences.data.catch {
+                if(it is IOException){
+                    emit(emptyPreferences())
+                }else{
+                    throw it
+                }
+            }
+                .map {
+                    it[stringPreferencesKey(KEY_POINTS)]
+                }
+            val value = flow.firstOrNull() ?: "0"
+            value
+        }
+    }
+
     companion object{
         private const val KEY_GOAL = "goalKey"
         private const val KEY_TOTAL_GOAL = "totalKey"
+        private const val KEY_POINTS = "points"
     }
 }

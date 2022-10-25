@@ -35,6 +35,7 @@ class MotionActivityService: Service() {
     private var currentSteps: Int = 0
     private var session:Int = 0
     private var lastSteps = -1
+    private var points: Int = 0
     private var receiver: ResultReceiver? = null
     private lateinit var sensorListener: SensorEventListener
     private lateinit var notificationManager: NotificationManager
@@ -84,11 +85,10 @@ class MotionActivityService: Service() {
 
         scope.launch {
             todaySteps =  repository.getStep().getOrNull()?.toInt() ?: 0
-
-        }
-        scope.launch {
             totalSteps = repository.getTotalStep().getOrNull()?.toInt() ?:0
+            points = repository.getPoints().getOrNull()?.toInt() ?: 0
         }
+
 
 
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as? SensorManager ?: throw IllegalStateException(getString(R.string.service_error))
@@ -156,10 +156,8 @@ class MotionActivityService: Service() {
 
         scope.launch {
             repository.putStep(todaySteps.toString())
-
-        }
-        scope.launch {
             repository.putTotalStep(totalSteps.toString())
+
         }
 
 
@@ -176,11 +174,18 @@ class MotionActivityService: Service() {
         receiver?.let {
             val bundle = Bundle()
 
-            if (todaySteps > 300){
+            if (todaySteps > 2000){
                 todaySteps = 0
-                runBlocking { repository.putStep(todaySteps.toString()) } //TODO
+                points += 25
+                runBlocking {
+                    repository.putStep(todaySteps.toString())
+                    repository.putPoints(points.toString())
+                } //TODO
                 bundle.putInt(KEY_STEPS, todaySteps)
+                bundle.putInt(KEY_POINTS, points)
+
             }else{
+                bundle.putInt(KEY_POINTS, points)
                 bundle.putInt(KEY_STEPS, todaySteps)
 
             }
@@ -205,6 +210,7 @@ class MotionActivityService: Service() {
         private const val ACTION_TOGGLE_ACTIVITY = "ACTION_TOGGLE_ACTIVITY"
         private const val KEY_ID = "ID"
         internal const val KEY_STEPS = "STEPS"
+        internal const val KEY_POINTS = "POINTS"
         internal const val KEY_CURRENT = "STEPS_CURRENT"
         internal const val KEY_TOTAL = "TOTAL"
         private const val KEY_ACTIVE = "ACTIVE"
