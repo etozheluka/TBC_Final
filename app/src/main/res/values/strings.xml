@@ -2,4 +2,15 @@
     <string name="app_name">TBC_Final</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="steps">Steps</string>
+    <string name="service_error">Service Error</string>
+    <string name="steps_format">%d / 2000 steps</string>
+    <string name="_2000">2000</string>
+    <string name="_0">0</string>
+    <string name="guest">Guest</string>
+    <string name="welcome_nguest">Welcome \nGuest!</string>
+    <string name="dateFormat">d MMMM</string>
+    <string name="_0_0_cal">0.0 Cal</string>
+    <string name="_0_0_km">0.0 KM</string>
+    <string name="_0_0_h">0.0 H</string>
 </resources>

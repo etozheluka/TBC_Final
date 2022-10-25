@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.8'
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.13'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.1.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.6'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -84,4 +85,10 @@ dependencies {
 
     //Splash screen
     implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    //datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //CircularProgressBar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 }
