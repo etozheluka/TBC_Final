@@ -3,45 +3,35 @@ package com.example.tbc_final.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.ResultReceiver
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import com.example.tbc_final.MainActivity
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHomeBinding
 import com.example.tbc_final.service.MotionActivityService
+import com.example.tbc_final.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+
     private var currentSteps: Int = 0
     private var totalStepsCount:Int = 0
     private var totalPointsCount:Int = 0
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun start() {
         subscribeService()
 
         val date = SimpleDateFormat(getString(R.string.dateFormat)).format(Calendar.getInstance().time)
         binding.date.text = date.toString()
 
+        val activity = requireActivity() as? MainActivity
+        activity?.showNavBar()
     }
+
+
 
 
 
@@ -88,12 +78,6 @@ class HomeFragment : Fragment() {
 
         }
 
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object{

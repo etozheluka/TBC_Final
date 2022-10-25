@@ -1,4 +1,4 @@
-package com.example.tbc_final.ui.main
+package com.example.tbc_final.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

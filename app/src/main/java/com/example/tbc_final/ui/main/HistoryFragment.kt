@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHistoryBinding
 import com.example.tbc_final.databinding.FragmentLogInBinding
+import com.example.tbc_final.ui.base.BaseFragment
 
 
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBinding::inflate) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-
+    override fun start() {
+        TODO("Not yet implemented")
     }
 }
