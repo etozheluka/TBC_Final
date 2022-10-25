@@ -5,8 +5,9 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.databinding.FragmentStartBinding
-
+import com.example.tbc_final.ui.base.BaseFragment
 
 
 class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
@@ -15,7 +16,7 @@ class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::i
     override fun start() {
         checkPermission()
         binding.button.setOnClickListener {
-//            findNavController().navigate(StartFragmentDirections.actionStartFragmentToHomeFragment())
+            findNavController().navigate(StartFragmentDirections.actionStartFragmentToHomeFragment())
         }
     }
 

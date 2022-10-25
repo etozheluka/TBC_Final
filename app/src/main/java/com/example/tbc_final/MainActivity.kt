@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         installSplashScreen()
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 
         val controller = findNavController(R.id.fragmentContainerView)
@@ -53,8 +54,12 @@ class MainActivity : AppCompatActivity() {
         hideNavBar()
     }
 
-   private fun hideNavBar() {
+    fun hideNavBar() {
         navView.visibility = View.GONE
+    }
+
+    fun showNavBar() {
+        navView.visibility = View.VISIBLE
     }
 
 }

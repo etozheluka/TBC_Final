@@ -1,4 +1,4 @@
-package com.example.tbc_final.ui.main
+package com.example.tbc_final.ui.adapter.base
 
 abstract class BaseDiff<T> {
 
