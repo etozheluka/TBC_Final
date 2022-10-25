@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
     private var currentSteps: Int = 0
     private var totalStepsCount:Int = 0
     private var totalPointsCount:Int = 0
-    private val viewModel: HomeViewModel by viewModels()
 
 
     override fun onCreateView(
