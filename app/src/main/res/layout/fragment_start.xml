@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:text="Run and earn with our app"
+        android:text="@string/improve_your_running_skills"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,7 +36,7 @@
         android:layout_height="59dp"
         android:layout_marginBottom="64dp"
         android:background="@drawable/rounded_btn"
-        android:text="Get Started"
+        android:text="@string/get_started"
         android:textStyle="normal"
         android:textSize="15sp"
         android:textColor="@color/white"

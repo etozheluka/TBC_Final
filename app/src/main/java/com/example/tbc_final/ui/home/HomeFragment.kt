@@ -26,7 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         subscribeService()
 
         val date = SimpleDateFormat(getString(R.string.dateFormat)).format(Calendar.getInstance().time)
-        binding.date.text = date.toString()
+        binding?.date?.text = date.toString()
 
         val activity = requireActivity() as? MainActivity
         activity?.showNavBar()
@@ -36,7 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
 
     private fun toCalc(){
-        binding.currentStatsIV.setOnClickListener {
+        binding?.currentStatsIV?.setOnClickListener {
             findNavController().navigate(directions = HomeFragmentDirections.actionHomeFragmentToCalculatorFragment())
 
         }
@@ -62,7 +62,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         currentSteps = steps
         totalStepsCount = total
         totalPointsCount = points
-        binding.apply {
+        binding?.apply {
             current.text = session.toString()
             totalPoints.text = totalPointsCount.toString()
             totalSteps.text = totalStepsCount.toString()

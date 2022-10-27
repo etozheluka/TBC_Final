@@ -14,7 +14,7 @@ abstract class BaseFragment<VB : ViewBinding>(
 ) : Fragment() {
 
     private var _binding: VB? = null
-    protected val binding get() = _binding!!
+    protected val binding get() = _binding
 
     abstract fun start()
 
@@ -23,8 +23,8 @@ abstract class BaseFragment<VB : ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = inflate.invoke(inflater, container, false)
-        return binding.root
+        _binding = this.inflate.invoke(inflater, container, false)
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
