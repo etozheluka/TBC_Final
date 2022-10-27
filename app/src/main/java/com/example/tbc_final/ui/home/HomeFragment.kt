@@ -3,6 +3,7 @@ package com.example.tbc_final.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.ResultReceiver
+import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.MainActivity
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHomeBinding
@@ -29,12 +30,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         val activity = requireActivity() as? MainActivity
         activity?.showNavBar()
+
+        toCalc()
     }
 
 
+    private fun toCalc(){
+        binding.currentStatsIV.setOnClickListener {
+            findNavController().navigate(directions = HomeFragmentDirections.actionHomeFragmentToCalculatorFragment())
 
-
-
+        }
+    }
 
     private fun subscribeService() {
 
