@@ -13,4 +13,14 @@
     <string name="_0_0_cal">0.0 Cal</string>
     <string name="_0_0_km">0.0 KM</string>
     <string name="_0_0_h">0.0 H</string>
+    <string name="centimeters">Centimeters</string>
+    <string name="kilograms">Kilograms</string>
+    <string name="get_started">Get Started</string>
+    <string name="improve_your_running_skills">Improve your Running Skills</string>
+    <string name="calculate">Calculate</string>
+    <string name="filler">Please fill empty fields</string>
+    <string name="under">Underweight</string>
+    <string name="normal">Normal</string>
+    <string name="over">Overweight</string>
+    <string name="should"><![CDATA[BMI should be > 16.0]]></string>
 </resources>
