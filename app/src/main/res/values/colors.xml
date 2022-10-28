@@ -11,4 +11,6 @@
     <color name="under">#4891FF</color>
     <color name="normal">#05F31D</color>
     <color name="over">#F33636</color>
+    <color name="gradient1">#816DE9</color>
+    <color name="gradient2">#F14985</color>
 </resources>
