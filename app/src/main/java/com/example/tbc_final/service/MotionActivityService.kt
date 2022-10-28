@@ -19,9 +19,9 @@ import android.util.SparseArray
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import com.example.tbc_final.MainActivity
 import com.example.tbc_final.R
 import com.example.tbc_final.domain.repository.StepPreferencesRepository
-import com.example.tbc_final.ui.home.HomeFragment
 import com.example.tbc_final.ui.home.HomeFragment.Companion.RECEIVER_TAG
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -112,7 +112,7 @@ class MotionActivityService: Service() {
 
     private fun setUpService() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager ?: throw java.lang.IllegalStateException(getString(R.string.service_error))
-        val notificationIntent = Intent(this, HomeFragment::class.java)
+        val notificationIntent = Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,PendingIntent.FLAG_IMMUTABLE)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -122,7 +122,9 @@ class MotionActivityService: Service() {
         notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.login_logo)
             .setContentTitle(getString(R.string.app_name))
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
         startForeground(FOREGROUND_ID, notificationBuilder.build())
     }
 
@@ -180,7 +182,7 @@ class MotionActivityService: Service() {
                 runBlocking {
                     repository.putStep(todaySteps.toString())
                     repository.putPoints(points.toString())
-                } //TODO
+                } //TODO runblocking problme ?
                 bundle.putInt(KEY_STEPS, todaySteps)
                 bundle.putInt(KEY_POINTS, points)
 

@@ -7,6 +7,6 @@ class LeaderFragment : BaseFragment<FragmentLeaderBinding>(FragmentLeaderBinding
 
 
     override fun start() {
-        TODO("Not yet implemented")
+
     }
 }

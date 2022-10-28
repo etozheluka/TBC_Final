@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/startFragment"
@@ -104,4 +104,15 @@
         android:name="com.example.tbc_final.ui.calculator.CalculatorFragment"
         android:label="fragment_calculator"
         tools:layout="@layout/fragment_calculator" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.tbc_final.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_startFragment"
+            app:destination="@id/startFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:popUpTo="@id/nav_graph" />
+    </fragment>
 </navigation>

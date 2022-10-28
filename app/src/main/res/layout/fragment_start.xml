@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.StartFragment"
-    android:background="@drawable/start_background">
+    android:background="@drawable/home_back">
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -13,7 +13,7 @@
         android:layout_width="207dp"
         android:layout_height="52dp"
         android:layout_marginBottom="8dp"
-        android:text="Running App"
+        android:text="@string/running_app"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
