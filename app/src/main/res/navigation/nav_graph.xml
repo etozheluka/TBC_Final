@@ -92,12 +92,15 @@
     </fragment>
     <fragment
         android:id="@+id/leaderFragment"
-        android:name="com.example.tbc_final.ui.main.LeaderFragment"
+        android:name="com.example.tbc_final.ui.excercises.BodyPartFragment"
         android:label="fragment_leader"
-        tools:layout="@layout/fragment_leader" >
+        tools:layout="@layout/fragment_body_part" >
         <action
             android:id="@+id/action_leaderFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_leaderFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
@@ -114,5 +117,14 @@
             app:destination="@id/startFragment"
             app:enterAnim="@anim/from_bottom"
             app:popUpTo="@id/nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.tbc_final.ui.excercises.ExerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise" >
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>

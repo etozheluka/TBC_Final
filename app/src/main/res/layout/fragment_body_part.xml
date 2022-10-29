@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
+    tools:context=".ui.excercises.BodyPartFragment">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recorded_exercises"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="29sp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bodyPartRecycler"
+        android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+        tools:listitem="@layout/body_part_recycler_item" />
+</LinearLayout>
