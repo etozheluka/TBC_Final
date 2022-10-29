@@ -1,6 +1,8 @@
 package com.example.tbc_final.ui.main
 
 
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -21,7 +23,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
 
     override fun start() {
-        observer()
         listener()
     }
 
@@ -41,7 +42,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                         }
                         is UiState.InProcess -> {
                         }
-                        null -> TODO()
+                        null -> {}
                     }
                 }
             }
@@ -75,7 +76,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun listener() {
         binding?.signUpBtn?.setOnClickListener {
-              findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
+            observer()
+//              findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
         }
+
+
     }
 }

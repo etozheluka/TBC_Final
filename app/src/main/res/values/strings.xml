@@ -34,4 +34,8 @@
     <string name="equipment">equipment</string>
     <string name="target">Target :</string>
     <string name="cardiovascular_system">cardiovascular system</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="e_mail">E-mail</string>
+    <string name="log_in">Log IN</string>
 </resources>
