@@ -28,4 +28,10 @@
     <string name="profile">Profile</string>
     <string name="store">Store</string>
     <string name="running_app">Running App</string>
+    <string name="recorded_exercises">Recorded Exercises</string>
+    <string name="name">Name</string>
+    <string name="requirement">Requirement :</string>
+    <string name="equipment">equipment</string>
+    <string name="target">Target :</string>
+    <string name="cardiovascular_system">cardiovascular system</string>
 </resources>

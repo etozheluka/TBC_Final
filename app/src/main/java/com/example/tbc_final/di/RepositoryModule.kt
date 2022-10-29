@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import com.example.tbc_final.data.local.datastore.DataStore.store
+import com.example.tbc_final.data.repository.BodyPartRepositoryImpl
 import com.example.tbc_final.data.repository.StepPreferencesRepositoryImpl
+import com.example.tbc_final.domain.repository.BodyPartRepository
 import com.example.tbc_final.domain.repository.StepPreferencesRepository
 import dagger.Binds
 import dagger.Module
@@ -35,4 +37,10 @@ abstract class RepositoryModule {
 
 
     }
+
+    @Binds
+    @Singleton
+    abstract fun bindCourseRepository(
+        bodyPartRepositoryImpl: BodyPartRepositoryImpl
+    ): BodyPartRepository
 }
