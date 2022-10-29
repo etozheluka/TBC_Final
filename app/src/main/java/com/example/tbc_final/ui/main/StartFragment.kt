@@ -17,7 +17,7 @@ class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::i
     override fun start() {
         checkPermission()
         binding?.button?.setOnClickListener {
-            findNavController().navigate(StartFragmentDirections.actionStartFragmentToHomeFragment())
+            findNavController().navigate(StartFragmentDirections.actionStartFragmentToLogInFragment())
         }
     }
 

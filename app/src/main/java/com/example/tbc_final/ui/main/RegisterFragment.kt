@@ -11,9 +11,10 @@ import com.example.tbc_final.common.extensions.isValidEmail
 import com.example.tbc_final.common.extensions.toast
 import com.example.tbc_final.databinding.FragmentRegisterBinding
 import com.example.tbc_final.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
 
     private val signUpViewModel by viewModels<RegisterViewModel>()
@@ -32,8 +33,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                     when (it) {
                         is UiState.Success -> if (validation()) {
                             signUpViewModel.signup(
-                                email = binding.signUpEmail.text.toString(),
-                                password = binding.signUpPassword.text.toString()
+                                email = binding?.signUpEmail?.text.toString(),
+                                password = binding?.signUpPassword?.text.toString()
                             )
                         }
                         is UiState.Error -> {
@@ -50,20 +51,20 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     private fun validation(): Boolean {
         var isValid = true
 
-        if (binding.signUpEmail.text.isNullOrEmpty()) {
+        if (binding?.signUpEmail?.text.isNullOrEmpty()) {
             isValid = false
             toast("")
         } else {
-            if (!binding.signUpEmail.text.toString().isValidEmail()) {
+            if (!binding?.signUpEmail?.text.toString().isValidEmail()) {
                 isValid = false
                 toast("")
             }
         }
-        if (binding.signUpPassword.text.isNullOrEmpty()) {
+        if (binding?.signUpPassword?.text.isNullOrEmpty()) {
             isValid = false
             toast("")
         } else {
-            if (binding.signUpPassword.text.toString().length < 8) {
+            if (binding?.signUpPassword?.text.toString().length < 8) {
                 isValid = false
                 toast("")
             }
@@ -73,8 +74,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
 
     private fun listener() {
-        binding.signUpBtn.setOnClickListener {
-            //  findNavController().navigate('''')
+        binding?.signUpBtn?.setOnClickListener {
+              findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
         }
     }
 }

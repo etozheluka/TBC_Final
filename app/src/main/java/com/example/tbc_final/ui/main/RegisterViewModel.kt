@@ -5,11 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.tbc_final.common.UiState
 import com.example.tbc_final.domain.repository.SignUpRepository
 import com.google.firebase.auth.FirebaseUser
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class RegisterViewModel @Inject constructor(private val signUpRepository: SignUpRepository) :
     ViewModel() {
 

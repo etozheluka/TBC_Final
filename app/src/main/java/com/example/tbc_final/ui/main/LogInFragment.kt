@@ -9,8 +9,10 @@ import com.example.tbc_final.common.extensions.isValidEmail
 import com.example.tbc_final.common.extensions.toast
 import com.example.tbc_final.databinding.FragmentLogInBinding
 import com.example.tbc_final.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::inflate) {
 
     private val logInViewModel by viewModels<LogInViewModel>()
@@ -27,8 +29,8 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
                     when (it) {
                         is UiState.Success -> if (validation()) {
                             logInViewModel.logIn(
-                                email = binding.logInEmail.text.toString(),
-                                password = binding.logInPassword.text.toString()
+                                email = binding?.logInEmail?.text.toString(),
+                                password = binding?.logInPassword?.text.toString()
                             )
                         }
                         is UiState.Error -> {
@@ -44,20 +46,20 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
     private fun validation(): Boolean {
         var isValid = true
 
-        if (binding.logInEmail.text.isNullOrEmpty()) {
+        if (binding?.logInEmail?.text.isNullOrEmpty()) {
             isValid = false
             toast("")
         } else {
-            if (!binding.logInEmail.text.toString().isValidEmail()) {
+            if (!binding?.logInEmail?.text.toString().isValidEmail()) {
                 isValid = false
                 toast("")
             }
         }
-        if (binding.logInPassword.text.isNullOrEmpty()) {
+        if (binding?.logInPassword?.text.isNullOrEmpty()) {
             isValid = false
             toast("")
         } else {
-            if (binding.logInPassword.text.toString().length < 8) {
+            if (binding?.logInPassword?.text.toString().length < 8) {
                 isValid = false
                 toast("")
             }
@@ -67,8 +69,14 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
 
     private fun listener() {
-        binding.logInBtn.setOnClickListener {
-            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
+        binding?.apply {
+            logInBtn.setOnClickListener {
+                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
+            }
+            logInTVSignUp.setOnClickListener {
+                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToRegisterFragment())
+            }
         }
+
     }
 }
