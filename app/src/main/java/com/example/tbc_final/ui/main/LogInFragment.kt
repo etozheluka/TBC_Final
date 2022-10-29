@@ -1,4 +1,5 @@
 package com.example.tbc_final.ui.main
+
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -18,7 +19,6 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
     private val logInViewModel by viewModels<LogInViewModel>()
 
     override fun start() {
-        observer()
         listener()
     }
 
@@ -69,8 +69,10 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
 
     private fun listener() {
+
         binding?.apply {
             logInBtn.setOnClickListener {
+                observer()
                 findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
             }
             logInTVSignUp.setOnClickListener {

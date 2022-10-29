@@ -15,12 +15,12 @@ import javax.inject.Inject
 class RegisterViewModel @Inject constructor(private val signUpRepository: SignUpRepository) :
     ViewModel() {
 
-    private val _signupFlow = MutableSharedFlow<UiState<FirebaseUser>?>()
+    private val _signupFlow = MutableSharedFlow<FirebaseUser?>()
     val signupFlow get() = _signupFlow.asSharedFlow()
 
     suspend fun signup(email: String, password: String) = viewModelScope.launch {
         val result = signUpRepository.signUp(email, password)
-        _signupFlow.emit(result)
+       _signupFlow.emit(result)
     }
 
 }

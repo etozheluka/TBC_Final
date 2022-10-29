@@ -24,30 +24,20 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     override fun start() {
         listener()
+        observer()
     }
 
 
     private fun observer() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                signUpViewModel.signupFlow.collect {
-                    when (it) {
-                        is UiState.Success -> if (validation()) {
-                            signUpViewModel.signup(
-                                email = binding?.signUpEmail?.text.toString(),
-                                password = binding?.signUpPassword?.text.toString()
-                            )
-                        }
-                        is UiState.Error -> {
-                        }
-                        is UiState.InProcess -> {
-                        }
-                        null -> {}
-                    }
-                }
+            signUpViewModel.signupFlow.collect {
+                it?.let {
+                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
+                } ?: toast("dafaildi")
             }
         }
     }
+
 
     private fun validation(): Boolean {
         var isValid = true
@@ -76,10 +66,17 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun listener() {
         binding?.signUpBtn?.setOnClickListener {
-            observer()
-//              findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
+            viewLifecycleOwner.lifecycleScope.launch {
+                if (validation()) {
+                    signUpViewModel.signup(
+                        email = binding?.signUpEmail?.text.toString(),
+                        password = binding?.signUpPassword?.text.toString()
+                    )
+
+                }
+            }
+
+
         }
-
-
     }
 }
