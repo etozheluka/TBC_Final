@@ -3,6 +3,7 @@ package com.example.tbc_final.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.ResultReceiver
+import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.MainActivity
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHomeBinding
@@ -25,16 +26,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         subscribeService()
 
         val date = SimpleDateFormat(getString(R.string.dateFormat)).format(Calendar.getInstance().time)
-        binding.date.text = date.toString()
+        binding?.date?.text = date.toString()
 
         val activity = requireActivity() as? MainActivity
         activity?.showNavBar()
+
+        toCalc()
     }
 
 
+    private fun toCalc(){
+        binding?.currentStatsIV?.setOnClickListener {
+            findNavController().navigate(directions = HomeFragmentDirections.actionHomeFragmentToCalculatorFragment())
 
-
-
+        }
+    }
 
     private fun subscribeService() {
 
@@ -56,7 +62,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         currentSteps = steps
         totalStepsCount = total
         totalPointsCount = points
-        binding.apply {
+        binding?.apply {
             current.text = session.toString()
             totalPoints.text = totalPointsCount.toString()
             totalSteps.text = totalStepsCount.toString()

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/startFragment"
@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_start" >
         <action
             android:id="@+id/action_startFragment_to_logInFragment"
-            app:destination="@id/logInFragment" />
+            app:destination="@id/logInFragment"
+            app:enterAnim="@anim/open_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_startFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/open_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
@@ -24,10 +30,15 @@
         tools:layout="@layout/fragment_log_in" >
         <action
             android:id="@+id/action_logInFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/open_anim"
+            app:popEnterAnim="@anim/back_anim" />
         <action
             android:id="@+id/action_logInFragment_to_homeFragment2"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/open_anim"
+            app:popEnterAnim="@anim/back_anim"
+            app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -35,7 +46,11 @@
         android:label="RegisterFragment" >
         <action
             android:id="@+id/action_registerFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/open_anim"
+            app:popEnterAnim="@anim/back_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -51,6 +66,11 @@
         <action
             android:id="@+id/action_homeFragment_to_leaderFragment"
             app:destination="@id/leaderFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:popEnterAnim="@anim/from_top" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -72,11 +92,39 @@
     </fragment>
     <fragment
         android:id="@+id/leaderFragment"
-        android:name="com.example.tbc_final.ui.main.LeaderFragment"
+        android:name="com.example.tbc_final.ui.excercises.BodyPartFragment"
         android:label="fragment_leader"
-        tools:layout="@layout/fragment_leader" >
+        tools:layout="@layout/fragment_body_part" >
         <action
             android:id="@+id/action_leaderFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_leaderFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.example.tbc_final.ui.calculator.CalculatorFragment"
+        android:label="fragment_calculator"
+        tools:layout="@layout/fragment_calculator" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.tbc_final.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_startFragment"
+            app:destination="@id/startFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:popUpTo="@id/nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.tbc_final.ui.excercises.ExerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise" >
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -9,6 +9,6 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(FragmentStoreBinding::i
 
 
     override fun start() {
-        TODO("Not yet implemented")
+
     }
 }

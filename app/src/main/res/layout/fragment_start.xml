@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.StartFragment"
-    android:background="@drawable/start_background">
+    android:background="@drawable/home_back">
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -13,7 +13,7 @@
         android:layout_width="207dp"
         android:layout_height="52dp"
         android:layout_marginBottom="8dp"
-        android:text="Running App"
+        android:text="@string/running_app"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:text="Run and earn with our app"
+        android:text="@string/improve_your_running_skills"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,7 +36,7 @@
         android:layout_height="59dp"
         android:layout_marginBottom="64dp"
         android:background="@drawable/rounded_btn"
-        android:text="Get Started"
+        android:text="@string/get_started"
         android:textStyle="normal"
         android:textSize="15sp"
         android:textColor="@color/white"

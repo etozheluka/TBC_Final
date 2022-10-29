@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#504D83"
+    android:background="@drawable/gradient"
     tools:context=".ui.home.HomeFragment">
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rectangle_home"
+        app:layout_constraintBottom_toTopOf="@+id/currentStatsIV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivMenuIcon"
@@ -188,7 +198,7 @@
         android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:src="@drawable/blankcard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

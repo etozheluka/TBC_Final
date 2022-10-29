@@ -2,22 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/vector"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
-        android:id="@+id/leaderBoard"
+        android:id="@+id/leaderFragment"
         android:icon="@drawable/cup"
-        android:title="Leaderboard"
-
-        />
+        android:title="@string/leaderboard" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/user"
-        android:title="Profile" />
+        android:title="@string/profile" />
 
     <item
-        android:id="@+id/store"
+        android:id="@+id/storeFragment"
         android:icon="@drawable/store"
-        android:title="Store" />
+        android:title="@string/store" />
 </menu>
