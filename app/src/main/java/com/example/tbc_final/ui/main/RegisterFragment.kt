@@ -33,7 +33,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             signUpViewModel.signupFlow.collect {
                 it?.let {
                     findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
-                } ?: toast("dafaildi")
+                } ?: toast("")
             }
         }
     }

@@ -21,11 +21,6 @@ class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::i
         }
     }
 
-
-
-
-
-
     private fun checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q &&
             requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_SENSOR_STEP_COUNTER) &&
