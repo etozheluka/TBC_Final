@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/storeFragment"
-        android:name="com.example.tbc_final.presentation.main.StoreFragment"
+        android:name="com.example.tbc_final.presentation.store.StoreFragment"
         android:label="fragment_store"
         tools:layout="@layout/fragment_store" >
         <action
