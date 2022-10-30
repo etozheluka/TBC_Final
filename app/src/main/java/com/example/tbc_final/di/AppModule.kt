@@ -20,19 +20,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
-    @Singleton
-    fun provideRetrofitInstance(): Retrofit = Retrofit.Builder()
-        .client(HttpClient.okHttpClient)
-        .baseUrl("https://exercisedb.p.rapidapi.com/exercises/bodyPart/")
-        .addConverterFactory(
-            MoshiConverterFactory.create(
-                Moshi.Builder()
-                    .addLast(KotlinJsonAdapterFactory())
-                    .build()
-            )
-        )
-        .build()
+//
+//    @Provides
+//    @Singleton
+//    fun provideRetrofitInstance(): Retrofit = Retrofit.Builder()
+//        .client(HttpClient.okHttpClient)
+//        .baseUrl("https://exercisedb.p.rapidapi.com/exercises/bodyPart/")
+//        .addConverterFactory(
+//            MoshiConverterFactory.create(
+//                Moshi.Builder()
+//                    .addLast(KotlinJsonAdapterFactory())
+//                    .build()
+//            )
+//        )
+//        .build()
 
 
     @Singleton
