@@ -74,8 +74,9 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
         binding?.apply {
             logInBtn.setOnClickListener {
-//                observer()
-               validation()
+                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
+
+//               validation()
 
             }
             logInTVSignUp.setOnClickListener {

@@ -1,6 +1,7 @@
 package com.example.tbc_final.presentation.store
 
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,16 +27,15 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(FragmentStoreBinding::i
     private fun observer() {
         lifecycleScope.launch {
             storeViewModel.storeFlow.collect {
-                if (it is UiState.Success) {
-                    storeAdapter.submitList(it.response)
-                }
+                Log.d("lukaTest", "observer: ${it.data} ")
+                storeAdapter.submitList(it.data?.sneakers)
             }
         }
     }
 
     private fun setUpRecycler() {
 
-        binding!!.clothesRV.apply {
+        binding?.clothesRV?.apply {
             adapter = storeAdapter
             layoutManager = GridLayoutManager(context,2)
         }

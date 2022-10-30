@@ -7,11 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbc_final.databinding.StoreItemLayoutBinding
-import com.example.tbc_final.domain.model.Sneaker
+import com.example.tbc_final.domain.model.SneakerModel
 import com.example.tbc_final.utils.extensions.setImage
 
-//StoreData.
-class StoreAdapter : ListAdapter<Sneaker, StoreAdapter.ViewHolder>(DiffUtilCallback()) {
+class StoreAdapter : ListAdapter<SneakerModel.Sneaker, StoreAdapter.ViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
@@ -25,7 +24,7 @@ class StoreAdapter : ListAdapter<Sneaker, StoreAdapter.ViewHolder>(DiffUtilCallb
     inner class ViewHolder(private val binding: StoreItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private lateinit var content: Sneaker
+        private lateinit var content: SneakerModel.Sneaker
 
 
         fun bind() {
@@ -39,17 +38,17 @@ class StoreAdapter : ListAdapter<Sneaker, StoreAdapter.ViewHolder>(DiffUtilCallb
     }
 
 
-    class DiffUtilCallback : DiffUtil.ItemCallback<Sneaker>() {
+    class DiffUtilCallback : DiffUtil.ItemCallback<SneakerModel.Sneaker>() {
         override fun areItemsTheSame(
-            oldItem: Sneaker,
-            newItem: Sneaker
+            oldItem: SneakerModel.Sneaker,
+            newItem: SneakerModel.Sneaker
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem:Sneaker,
-            newItem: Sneaker
+            oldItem:SneakerModel.Sneaker,
+            newItem: SneakerModel.Sneaker
         ): Boolean {
             return oldItem == newItem
         }

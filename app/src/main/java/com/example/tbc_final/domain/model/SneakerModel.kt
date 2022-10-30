@@ -2,7 +2,9 @@ package com.example.tbc_final.domain.model
 
 import com.squareup.moshi.Json
 
-
+data class SneakerModel(
+    val sneakers: List<Sneaker?>?
+) {
     data class Sneaker(
         @Json(name = "box_condition")
         val boxCondition: String?,
@@ -14,7 +16,6 @@ import com.squareup.moshi.Json
         val color: String?,
         val designer: String?,
         val details: String?,
-        val gender: List<String?>,
         @Json(name = "grid_picture_url")
         val gridPictureUrl: String?,
         @Json(name = "has_picture")
@@ -53,3 +54,4 @@ import com.squareup.moshi.Json
         @Json(name = "upper_material")
         val upperMaterial: String?
     )
+}
