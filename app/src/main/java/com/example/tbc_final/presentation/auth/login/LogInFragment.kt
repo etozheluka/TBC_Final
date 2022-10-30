@@ -41,7 +41,9 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
             logInViewModel.logInFlow.collect {
                 it?.let {
                     findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
-                } ?: toast(getString(R.string.error))
+                } ?: binding?.emailInputLayout?.apply {
+                    error = context.getString(R.string.invalid)
+                }
             }
         }
     }

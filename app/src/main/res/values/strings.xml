@@ -42,4 +42,6 @@
     <string name="valid_password">Enter correct password</string>
     <string name="error">Error</string>
     <string name="sample_sneaker">Nike air force 1</string>
+    <string name="invalid">Invalid Credentials</string>
+    <string name="registered">This email is already registered</string>
 </resources>

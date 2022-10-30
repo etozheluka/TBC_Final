@@ -29,7 +29,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             signUpViewModel.signupFlow.collect {
                 it?.let {
                     findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
-                } ?: toast(getString(R.string.error))
+                } ?: binding?.emailInputLayout?.apply {
+                    error = context.getString(R.string.registered)
+                }
             }
         }
     }

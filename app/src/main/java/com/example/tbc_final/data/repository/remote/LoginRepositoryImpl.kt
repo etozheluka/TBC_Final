@@ -15,7 +15,12 @@ import javax.inject.Inject
 class LoginRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) :
     FirebaseServiceHandler(), LoginRepository {
     override suspend fun login(email: String, password: String): FirebaseUser? {
-        val result = auth.signInWithEmailAndPassword(email, password)
-        return result.await().user
+        return try {
+            val result = auth.signInWithEmailAndPassword(email, password)
+            result.await().user
+        }catch (e:java.lang.Exception){
+            null
+        }
+
     }
 }
