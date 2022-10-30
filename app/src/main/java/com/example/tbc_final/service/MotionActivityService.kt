@@ -14,15 +14,16 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.os.ResultReceiver
-import android.util.Log
 import android.util.SparseArray
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.tbc_final.MainActivity
 import com.example.tbc_final.R
-import com.example.tbc_final.domain.repository.StepPreferencesRepository
-import com.example.tbc_final.ui.home.HomeFragment.Companion.RECEIVER_TAG
+import com.example.tbc_final.domain.repository.local.StepPreferencesRepository
+import com.example.tbc_final.domain.use_case.preferences.GetStepUseCase
+import com.example.tbc_final.domain.use_case.preferences.PutStepUseCase
+import com.example.tbc_final.presentation.home.HomeFragment.Companion.RECEIVER_TAG
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import java.util.*
@@ -47,7 +48,9 @@ class MotionActivityService: Service() {
     private val scope = CoroutineScope(Dispatchers.Main + job)
 
     @Inject
-    lateinit var repository: StepPreferencesRepository
+    lateinit var getStepUseCase: GetStepUseCase
+    @Inject
+    lateinit var putStepUseCase: PutStepUseCase
 
     override fun onBind(p0: Intent?): IBinder? {
         return null
@@ -84,9 +87,9 @@ class MotionActivityService: Service() {
     private fun setUpSensor() {
 
         scope.launch {
-            todaySteps =  repository.getStep().getOrNull()?.toInt() ?: 0
-            totalSteps = repository.getTotalStep().getOrNull()?.toInt() ?:0
-            points = repository.getPoints().getOrNull()?.toInt() ?: 0
+            todaySteps =  getStepUseCase.getStep().getOrNull()?.toInt() ?: 0
+            totalSteps = getStepUseCase.getTotalStep().getOrNull()?.toInt() ?:0
+            points = getStepUseCase.getPoints().getOrNull()?.toInt() ?: 0
         }
 
 
@@ -157,8 +160,8 @@ class MotionActivityService: Service() {
     private fun saveEvent() {
 
         scope.launch {
-            repository.putStep(todaySteps.toString())
-            repository.putTotalStep(totalSteps.toString())
+            putStepUseCase.putStep(todaySteps.toString())
+            putStepUseCase.putTotalStep(totalSteps.toString())
 
         }
 
@@ -180,8 +183,8 @@ class MotionActivityService: Service() {
                 todaySteps = 0
                 points += 25
                 runBlocking {
-                    repository.putStep(todaySteps.toString())
-                    repository.putPoints(points.toString())
+                    putStepUseCase.putStep(todaySteps.toString())
+                    putStepUseCase.putPoints(points.toString())
                 } //TODO runblocking problme ?
                 bundle.putInt(KEY_STEPS, todaySteps)
                 bundle.putInt(KEY_POINTS, points)

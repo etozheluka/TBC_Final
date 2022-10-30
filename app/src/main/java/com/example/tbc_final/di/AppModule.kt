@@ -1,10 +1,11 @@
 package com.example.tbc_final.di
 
 
+import com.example.tbc_final.data.remote.okhttp.HttpClient
 import com.example.tbc_final.data.remote.service.BodyPartApiInterface
 import com.example.tbc_final.data.remote.service.StoreApi
-import com.example.tbc_final.data.repository.StoreRepositoryImpl
-import com.example.tbc_final.domain.repository.StoreRepository
+import com.example.tbc_final.data.repository.remote.StoreRepositoryImpl
+import com.example.tbc_final.domain.repository.remote.StoreRepository
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -22,7 +23,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofitInstance(): Retrofit = Retrofit.Builder()
-        .baseUrl("https://run.mocky.io/v3/")
+        .client(HttpClient.okHttpClient)
+        .baseUrl("https://exercisedb.p.rapidapi.com/exercises/bodyPart/")
         .addConverterFactory(
             MoshiConverterFactory.create(
                 Moshi.Builder()

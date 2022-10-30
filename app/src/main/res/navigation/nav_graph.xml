@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.tbc_final.ui.main.StartFragment"
+        android:name="com.example.tbc_final.presentation.main.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
-        android:name="com.example.tbc_final.ui.main.LogInFragment"
+        android:name="com.example.tbc_final.presentation.auth.login.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.tbc_final.ui.main.RegisterFragment"
+        android:name="com.example.tbc_final.presentation.auth.signup.RegisterFragment"
         android:label="RegisterFragment" >
         <action
             android:id="@+id/action_registerFragment_to_homeFragment"
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.tbc_final.ui.home.HomeFragment"
+        android:name="com.example.tbc_final.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.tbc_final.ui.main.HistoryFragment"
+        android:name="com.example.tbc_final.presentation.main.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/storeFragment"
-        android:name="com.example.tbc_final.ui.main.StoreFragment"
+        android:name="com.example.tbc_final.presentation.store.StoreFragment"
         android:label="fragment_store"
         tools:layout="@layout/fragment_store" >
         <action
@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/leaderFragment"
-        android:name="com.example.tbc_final.ui.excercises.BodyPartFragment"
+        android:name="com.example.tbc_final.presentation.excercises.BodyPartFragment"
         android:label="fragment_leader"
         tools:layout="@layout/fragment_body_part" >
         <action
@@ -104,12 +104,12 @@
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
-        android:name="com.example.tbc_final.ui.calculator.CalculatorFragment"
+        android:name="com.example.tbc_final.presentation.calculator.CalculatorFragment"
         android:label="fragment_calculator"
         tools:layout="@layout/fragment_calculator" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.tbc_final.ui.splash.SplashFragment"
+        android:name="com.example.tbc_final.presentation.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -120,7 +120,7 @@
     </fragment>
     <fragment
         android:id="@+id/exerciseFragment"
-        android:name="com.example.tbc_final.ui.excercises.ExerciseFragment"
+        android:name="com.example.tbc_final.presentation.excercises.ExerciseFragment"
         android:label="fragment_exercise"
         tools:layout="@layout/fragment_exercise" >
         <argument
