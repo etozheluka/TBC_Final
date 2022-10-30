@@ -16,7 +16,7 @@ abstract class BaseFragment<VB : ViewBinding>(
     private var _binding: VB? = null
     protected val binding get() = _binding
 
-    abstract fun start()
+    abstract fun onBind()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +29,7 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        start()
+        onBind()
     }
 
     override fun onDestroyView() {

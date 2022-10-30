@@ -38,6 +38,14 @@ class MainActivity : AppCompatActivity() {
 
         val controller = findNavController(R.id.fragmentContainerView)
         navView = findViewById(R.id.bottomNavigation)
+//
+//
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//
+//            when(destination.id){
+//                R.id.homeFragment -> navView.visibility = View.VISIBLE
+//            }
+//        }
 
 
         val appBarConfig = AppBarConfiguration(

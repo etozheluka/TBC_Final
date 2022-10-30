@@ -1,4 +1,4 @@
-package com.example.tbc_final.common
+package com.example.tbc_final.utils.common
 
 import retrofit2.Response
 

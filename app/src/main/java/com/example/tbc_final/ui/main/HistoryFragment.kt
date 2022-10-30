@@ -15,7 +15,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBind
 
 
 
-    override fun start() {
+    override fun onBind() {
         TODO("Not yet implemented")
     }
 }

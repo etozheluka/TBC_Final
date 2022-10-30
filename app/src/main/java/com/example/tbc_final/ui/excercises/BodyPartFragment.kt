@@ -21,7 +21,7 @@ class BodyPartFragment : BaseFragment<FragmentBodyPartBinding>(FragmentBodyPartB
         BodyPartAdapter()
     }
 
-    override fun start() {
+    override fun onBind() {
 
 
         binding?.bodyPartRecycler?.adapter = adapter

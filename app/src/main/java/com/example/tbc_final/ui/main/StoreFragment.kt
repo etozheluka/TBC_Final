@@ -8,7 +8,7 @@ import com.example.tbc_final.ui.base.BaseFragment
 class StoreFragment : BaseFragment<FragmentStoreBinding>(FragmentStoreBinding::inflate) {
 
 
-    override fun start() {
+    override fun onBind() {
 
     }
 }

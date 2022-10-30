@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.LogInFragment"
-    android:background="#28333F">
+    android:background="@drawable/back_png">
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:fontFamily="@font/poppins"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -32,38 +32,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logInImage" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/logInEmail"
-        android:layout_width="274dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/layout_bg"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:hint="@string/e_mail"
-        android:inputType="textEmailAddress"
-        android:padding="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#AEA8B2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInTv" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/logInPassword"
-        android:layout_width="273dp"
-        android:layout_height="53dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/layout_bg"
-        android:fontFamily="@font/poppins"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#AEA8B2"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/e_mail"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_mail"
+        app:endIconTint="@color/black"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/logInTv"
+        app:startIconTint="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:fontFamily="@font/poppins"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/password"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="@+id/emailInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/emailInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
+        app:startIconTint="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:fontFamily="@font/poppins"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logInBtn"
@@ -74,6 +107,7 @@
         android:background="@drawable/rounded_btn"
         android:fontFamily="@font/poppins"
         android:text="@string/log_in"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/logInTVSignUp"
@@ -86,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/poppins"
-        android:text=" Sign Up"
+        android:text="@string/sign_up"
         android:textColor="#7B61FF"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"

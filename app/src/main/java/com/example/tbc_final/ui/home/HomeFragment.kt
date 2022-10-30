@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private var totalStepsCount:Int = 0
     private var totalPointsCount:Int = 0
 
-    override fun start() {
+    override fun onBind() {
         subscribeService()
 
         val date = SimpleDateFormat(getString(R.string.dateFormat)).format(Calendar.getInstance().time)
@@ -70,15 +70,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             circularProgressBar.setProgressWithAnimation(currentSteps.toFloat())
             timeText.text = buildString {
                 append(((totalStepsCount / 7320.0)).toBigDecimal().setScale(1,RoundingMode.UP))
-                append(" H")
+                append(HOURS)
             }
             distanceText.text = buildString {
                 append((totalStepsCount / 1312.33595801).toBigDecimal().setScale(1,RoundingMode.UP))
-                append(" KM")
+                append(KM)
             }
             caloriesText.text = buildString {
                 append((totalStepsCount * 0.035).toBigDecimal().setScale(1,RoundingMode.UP))
-                append(" Cal")
+                append(CALORIES)
             }
 
 
@@ -87,6 +87,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     companion object{
+        const val HOURS = " H"
+        const val KM = " KM"
+        const val CALORIES = " Cal"
         const val RECEIVER_TAG = "RECEIVER_TAG"
     }
 }

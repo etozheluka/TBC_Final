@@ -1,18 +1,13 @@
 package com.example.tbc_final.ui.main
 
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.tbc_final.common.UiState
-import com.example.tbc_final.common.extensions.isValidEmail
-import com.example.tbc_final.common.extensions.toast
 import com.example.tbc_final.databinding.FragmentRegisterBinding
 import com.example.tbc_final.ui.base.BaseFragment
+import com.example.tbc_final.utils.extensions.isValidEmail
+import com.example.tbc_final.utils.extensions.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,7 +17,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     private val signUpViewModel by viewModels<RegisterViewModel>()
 
 
-    override fun start() {
+    override fun onBind() {
         listener()
         observer()
     }

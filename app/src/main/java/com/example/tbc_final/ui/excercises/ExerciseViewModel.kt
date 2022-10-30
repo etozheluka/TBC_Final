@@ -2,7 +2,7 @@ package com.example.tbc_final.ui.excercises
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tbc_final.common.Resource
+import com.example.tbc_final.utils.common.Resource
 import com.example.tbc_final.domain.model.BodyExercisesModel
 import com.example.tbc_final.domain.use_case.exercises.GetBodyPartsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class BodyPartViewModel @Inject constructor(
+class ExerciseViewModel @Inject constructor(
     private val getBodyPartUseCase: GetBodyPartsUseCase
 ):ViewModel(){
 

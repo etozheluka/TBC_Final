@@ -14,7 +14,7 @@ import com.example.tbc_final.ui.base.BaseFragment
 class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
 
 
-    override fun start() {
+    override fun onBind() {
         checkPermission()
         binding?.button?.setOnClickListener {
             findNavController().navigate(StartFragmentDirections.actionStartFragmentToLogInFragment())

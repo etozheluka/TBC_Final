@@ -37,5 +37,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="password">Password</string>
     <string name="e_mail">E-mail</string>
-    <string name="log_in">Log IN</string>
+    <string name="log_in">Log In</string>
+    <string name="valid_mail">Enter your email</string>
+    <string name="valid_password">Enter correct password</string>
 </resources>

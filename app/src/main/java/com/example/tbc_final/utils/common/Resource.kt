@@ -1,4 +1,4 @@
-package com.example.tbc_final.common
+package com.example.tbc_final.utils.common
 
 data class Resource<out T>(
     val status: Status = Status.LOADING,

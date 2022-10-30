@@ -9,7 +9,7 @@ import kotlinx.coroutines.delay
 
 
 class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding::inflate) {
-    override fun start() {
+    override fun onBind() {
         lifecycleScope.launchWhenCreated {
             delay(2000)
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToStartFragment())

@@ -1,7 +1,7 @@
 package com.example.tbc_final.data.repository
 
-import com.example.tbc_final.common.RequestHandler
-import com.example.tbc_final.common.Resource
+import com.example.tbc_final.utils.common.RequestHandler
+import com.example.tbc_final.utils.common.Resource
 import com.example.tbc_final.data.remote.service.BodyPartApiInterface
 import com.example.tbc_final.domain.model.BodyExercisesModel
 import com.example.tbc_final.domain.repository.BodyPartRepository

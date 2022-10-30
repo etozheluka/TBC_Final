@@ -1,7 +1,7 @@
 package com.example.tbc_final.domain.repository
 
 
-import com.example.tbc_final.common.Resource
+import com.example.tbc_final.utils.common.Resource
 import com.example.tbc_final.domain.model.BodyExercisesModel
 import kotlinx.coroutines.flow.Flow
 

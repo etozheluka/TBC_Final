@@ -13,7 +13,7 @@ class CalculatorFragment :
     BaseFragment<FragmentCalculatorBinding>(FragmentCalculatorBinding::inflate) {
 
 
-    override fun start() {
+    override fun onBind() {
         val activity = requireActivity() as? MainActivity
         activity?.hideNavBar()
 
@@ -56,7 +56,7 @@ class CalculatorFragment :
                 text = context.getString(R.string.under)
                 setTextColor(resources.getColor(R.color.under,null))
             }
-        }else if (calculate().toDouble() > 18.5 && calculate().toDouble() <=25.0 ){
+        }else if (calculate().toDouble() > 18.5 && calculate().toDouble() <= 25.0 ){
             binding?.bmiStat?.apply {
                 text = context.getString(R.string.normal)
                 setTextColor(resources.getColor(R.color.normal,null))
