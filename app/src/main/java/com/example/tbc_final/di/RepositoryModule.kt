@@ -2,18 +2,14 @@ package com.example.tbc_final.di
 
 import android.content.Context
 import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
-import com.example.tbc_final.data.local.datastore.DataStore.store
-import com.example.tbc_final.data.repository.LoginRepositoryImpl
-import com.example.tbc_final.data.repository.SignUpRepositoryImpl
-import com.example.tbc_final.data.repository.BodyPartRepositoryImpl
-import com.example.tbc_final.data.repository.StepPreferencesRepositoryImpl
-import com.example.tbc_final.domain.repository.LoginRepository
-import com.example.tbc_final.domain.repository.SignUpRepository
-import com.example.tbc_final.domain.repository.BodyPartRepository
-import com.example.tbc_final.domain.repository.StepPreferencesRepository
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import androidx.datastore.preferences.preferencesDataStoreFile
+
+import com.example.tbc_final.data.repository.remote.BodyPartRepositoryImpl
+import com.example.tbc_final.data.repository.local.StepPreferencesRepositoryImpl
+import com.example.tbc_final.domain.repository.remote.BodyPartRepository
+import com.example.tbc_final.domain.repository.local.StepPreferencesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -29,19 +25,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindStepPreferencesRepository(
-        stepPreferencesRepositoryImpl:StepPreferencesRepositoryImpl
+        stepPreferencesRepositoryImpl: StepPreferencesRepositoryImpl
     ): StepPreferencesRepository
-
-    companion object {
-        @Provides
-        @Singleton
-        fun provideUserDataStorePreferences(
-            @ApplicationContext applicationContext: Context
-        ): DataStore<Preferences> {
-            return applicationContext.store
-        }
-    }
-
 
 
     @Binds
@@ -49,6 +34,18 @@ abstract class RepositoryModule {
     abstract fun bindCourseRepository(
         bodyPartRepositoryImpl: BodyPartRepositoryImpl
     ): BodyPartRepository
+
+    companion object {
+        @Provides
+        @Singleton
+        fun provideUserDataStorePreferences(
+            @ApplicationContext applicationContext: Context
+        ): DataStore<Preferences> {
+            return PreferenceDataStoreFactory.create(
+                produceFile = { applicationContext.preferencesDataStoreFile("steps_preferences") }
+            )
+        }
+    }
 
 }
 
