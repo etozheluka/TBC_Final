@@ -23,23 +23,23 @@ class CalculatorFragment :
 
         binding?.calculateBtn?.setOnClickListener {
 
-            val centimeters = binding?.centimeters?.text.toString().toDouble()
-            val kilograms = binding?.kilograms?.text.toString().toDouble()
+            val centimeters = binding?.centimeters?.text.toString()
+            val kilograms = binding?.kilograms?.text.toString()
 
 
             if (binding?.centimeters?.text!!.isEmpty() || binding?.kilograms?.text!!.isEmpty() || viewModel.calculate(
-                    centimeters,
-                    kilograms
+                    centimeters.toDouble(),
+                    kilograms.toDouble()
                 ).toDouble() < 16.0
             ) {
                 Snackbar.make(requireView(), getString(R.string.should), Snackbar.LENGTH_SHORT)
                     .show()
             } else {
                 binding?.bmi?.text = buildString {
-                    append(viewModel.calculate(centimeters, kilograms))
+                    append(viewModel.calculate(centimeters.toDouble(), kilograms.toDouble()))
                     append(BMI)
                 }
-                bmiStat(centimeters, kilograms)
+                bmiStat(centimeters.toDouble(), kilograms.toDouble())
             }
 
         }

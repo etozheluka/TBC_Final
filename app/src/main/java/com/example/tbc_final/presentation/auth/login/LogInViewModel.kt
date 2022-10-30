@@ -25,4 +25,5 @@ class LogInViewModel @Inject constructor(private val loginRepository: LoginRepos
         val result = loginRepository.login(email,password)
         _logInFlow.emit(result)
     }
+
 }

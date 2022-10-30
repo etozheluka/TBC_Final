@@ -41,4 +41,5 @@
     <string name="valid_mail">Enter your email</string>
     <string name="valid_password">Enter correct password</string>
     <string name="error">Error</string>
+    <string name="sample_sneaker">Nike air force 1</string>
 </resources>

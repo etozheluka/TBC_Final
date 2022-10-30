@@ -32,6 +32,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
                 email = email,
                 password = password
             )
+
         }
     }
 
@@ -74,9 +75,9 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
         binding?.apply {
             logInBtn.setOnClickListener {
-                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
+//                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
 
-//               validation()
+               validation()
 
             }
             logInTVSignUp.setOnClickListener {
