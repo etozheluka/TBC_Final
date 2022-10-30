@@ -1,6 +1,6 @@
 package com.example.tbc_final.domain.use_case.exercises
 
-import com.example.tbc_final.domain.repository.BodyPartRepository
+import com.example.tbc_final.domain.repository.remote.BodyPartRepository
 import javax.inject.Inject
 
 class GetBodyPartsUseCase @Inject constructor(private val bodyPartRepository: BodyPartRepository) {

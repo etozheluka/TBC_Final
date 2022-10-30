@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
-    lateinit var navView: BottomNavigationView
+    private lateinit var navView: BottomNavigationView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,13 +31,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         supportActionBar?.hide()
 
+        setUpNavigation()
+
+    }
+
+    private fun setUpNavigation() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 
         val controller = findNavController(R.id.fragmentContainerView)
-        navView = findViewById(R.id.bottomNavigation)
+        navView = binding.bottomNavigation
+        navView.visibility = View.GONE
 
 
         val appBarConfig = AppBarConfiguration(
@@ -49,18 +55,23 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
+
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+
+            when (destination.id) {
+                R.id.exerciseFragment -> navView.visibility = View.GONE
+                R.id.calculatorFragment -> navView.visibility = View.GONE
+                R.id.homeFragment -> navView.visibility = View.VISIBLE
+                R.id.storeFragment -> navView.visibility = View.VISIBLE
+                R.id.leaderFragment -> navView.visibility = View.VISIBLE
+                R.id.historyFragment -> navView.visibility = View.VISIBLE
+            }
+        }
+
         setupActionBarWithNavController(controller, appBarConfig)
         navView.setupWithNavController(controller)
-
-        hideNavBar()
     }
 
-    fun hideNavBar() {
-        navView.visibility = View.GONE
-    }
-
-    fun showNavBar() {
-        navView.visibility = View.VISIBLE
-    }
 
 }

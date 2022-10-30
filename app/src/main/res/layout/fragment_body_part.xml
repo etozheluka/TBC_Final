@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@drawable/gradient2"
-    tools:context=".ui.excercises.BodyPartFragment">
+    tools:context=".presentation.excercises.BodyPartFragment">
 
 
     <androidx.appcompat.widget.AppCompatTextView
