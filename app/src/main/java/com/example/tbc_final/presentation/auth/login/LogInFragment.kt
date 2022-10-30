@@ -8,8 +8,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.R
 import com.example.tbc_final.utils.common.UiState
 import com.example.tbc_final.databinding.FragmentLogInBinding
+import com.example.tbc_final.presentation.auth.signup.RegisterFragmentDirections
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.utils.extensions.isValidEmail
+import com.example.tbc_final.utils.extensions.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -20,30 +22,31 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
     override fun onBind() {
         listener()
+        observer()
     }
 
-    private fun observer(email:String,password:String) {
+
+    private fun logIn(email: String, password: String) {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                logInViewModel.logInFlow.collect {
-                    when (it) {
-                        is UiState.Success -> {
-                            logInViewModel.logIn(
-                                email = email,
-                                password = password
-                            )
-                        }
-                        is UiState.Error -> {
-                        }
-                        is UiState.InProcess -> {
-                        }
-                    }
-                }
+            logInViewModel.logIn(
+                email = email,
+                password = password
+            )
+        }
+    }
+
+    private fun observer() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            logInViewModel.logInFlow.collect {
+                it?.let {
+                    findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
+                } ?: toast(getString(R.string.error))
             }
         }
     }
 
-    private fun validation(){
+
+    private fun validation() {
         binding?.apply {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
@@ -60,12 +63,11 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
             }
             if (email.isValidEmail() || password.isNotEmpty()) {
-                observer(email,password)
+                logIn(email,password)
             }
 
         }
     }
-
 
 
     private fun listener() {
@@ -73,8 +75,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
         binding?.apply {
             logInBtn.setOnClickListener {
 //                observer()
-                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
-//                validation()
+               validation()
 
             }
             logInTVSignUp.setOnClickListener {
