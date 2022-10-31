@@ -6,13 +6,13 @@
         android:icon="@drawable/vector"
         android:title="@string/home" />
     <item
-        android:id="@+id/leaderFragment"
+        android:id="@+id/BodyPartFragment"
         android:icon="@drawable/cup"
-        android:title="@string/leaderboard" />
+        android:title="@string/exercises" />
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/user"
-        android:title="@string/profile" />
+        android:id="@+id/nutritionFragment"
+        android:icon="@drawable/ic_food"
+        android:title="@string/nutrition" />
 
     <item
         android:id="@+id/storeFragment"

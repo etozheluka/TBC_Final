@@ -45,4 +45,16 @@
     <string name="invalid">Invalid Credentials</string>
     <string name="registered">This email is already registered</string>
     <string name="not_supported">Your Device Is Not Supported</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="grams">Grams</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="product">Product :</string>
+    <string name="product_">Product</string>
+    <string name="digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="nutr">Nutrition</string>
+    <string name="nutrition">Nutrition</string>
+    <string name="exercises">Exercises</string>
 </resources>

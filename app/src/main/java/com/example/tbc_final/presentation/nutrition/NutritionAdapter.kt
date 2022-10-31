@@ -1,55 +1,54 @@
-package com.example.tbc_final.presentation.store
-
+package com.example.tbc_final.presentation.nutrition
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tbc_final.databinding.NutritionItemBinding
 import com.example.tbc_final.databinding.StoreItemLayoutBinding
+import com.example.tbc_final.domain.model.NutritionModel
 import com.example.tbc_final.domain.model.SneakerModel
-import com.example.tbc_final.presentation.excercises.ExerciseAdapter
+import com.example.tbc_final.presentation.store.StoreAdapter
 import com.example.tbc_final.utils.extensions.setImage
 
-class StoreAdapter : ListAdapter<SneakerModel.Sneaker, StoreAdapter.ViewHolder>(DiffUtilCallback()) {
+class NutritionAdapter:ListAdapter<NutritionModel.Item,NutritionAdapter.ViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
-            StoreItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            NutritionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind()
     }
 
-    inner class ViewHolder(private val binding: StoreItemLayoutBinding) :
+    inner class ViewHolder(private val binding: NutritionItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private lateinit var content: SneakerModel.Sneaker
+        private lateinit var content: NutritionModel.Item
 
 
         fun bind() {
             content = getItem(adapterPosition)
             binding.apply {
-                shoeNameTV.text = content.name
-                itemCostTV.text = content.retailPriceCents.toString()
-                shoesImageView.setImage(content.mainPictureUrl!!)
+                nutrition.text = content.toString().drop(5).dropLast(1)
             }
         }
     }
 
 
-    class DiffUtilCallback : DiffUtil.ItemCallback<SneakerModel.Sneaker>() {
+    class DiffUtilCallback : DiffUtil.ItemCallback<NutritionModel.Item>() {
         override fun areItemsTheSame(
-            oldItem: SneakerModel.Sneaker,
-            newItem: SneakerModel.Sneaker
+            oldItem: NutritionModel.Item,
+            newItem: NutritionModel.Item
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.Name == newItem.Name
         }
 
         override fun areContentsTheSame(
-            oldItem:SneakerModel.Sneaker,
-            newItem: SneakerModel.Sneaker
+            oldItem: NutritionModel.Item,
+            newItem: NutritionModel.Item
         ): Boolean {
             return oldItem == newItem
         }

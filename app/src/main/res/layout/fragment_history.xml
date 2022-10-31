@@ -7,37 +7,16 @@
     tools:context=".presentation.main.HistoryFragment"
     android:background="#28333F">
 
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/historyRV"
-        android:layout_width="392dp"
-        android:layout_height="455dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    <SurfaceView
+        android:id="@+id/preview"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/history_item_layout" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="249dp"
-        android:layout_height="202dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/man"
-        app:layout_constraintBottom_toTopOf="@+id/historyRV"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="127dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/history"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

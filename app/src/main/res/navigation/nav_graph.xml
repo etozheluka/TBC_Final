@@ -65,7 +65,7 @@
             app:destination="@id/historyFragment" />
         <action
             android:id="@+id/action_homeFragment_to_leaderFragment"
-            app:destination="@id/leaderFragment" />
+            app:destination="@id/BodyPartFragment" />
         <action
             android:id="@+id/action_homeFragment_to_calculatorFragment"
             app:destination="@id/calculatorFragment"
@@ -97,10 +97,10 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/leaderFragment"
+        android:id="@+id/BodyPartFragment"
         android:name="com.example.tbc_final.presentation.excercises.BodyPartFragment"
-        android:label="fragment_leader"
-        tools:layout="@layout/fragment_body_part" >
+        android:label="fragment_body_part"
+        tools:layout="@layout/fragment_body_part">
         <action
             android:id="@+id/action_leaderFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -133,4 +133,9 @@
             android:name="type"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/nutritionFragment"
+        android:name="com.example.tbc_final.presentation.nutrition.NutritionFragment"
+        android:label="fragment_nutrition"
+        tools:layout="@layout/fragment_nutrition" />
 </navigation>
