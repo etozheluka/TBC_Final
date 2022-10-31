@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.storeFragment,
-                R.id.leaderFragment,
+                R.id.nutritionFragment,
                 R.id.historyFragment,
             )
         )
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.calculatorFragment -> navView.visibility = View.GONE
                 R.id.homeFragment -> navView.visibility = View.VISIBLE
                 R.id.storeFragment -> navView.visibility = View.VISIBLE
-                R.id.leaderFragment -> navView.visibility = View.VISIBLE
+                R.id.BodyPartFragment -> navView.visibility = View.VISIBLE
                 R.id.historyFragment -> navView.visibility = View.VISIBLE
             }
         }

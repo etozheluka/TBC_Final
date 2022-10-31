@@ -25,9 +25,8 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(FragmentStoreBinding::i
     }
 
     private fun observer() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             storeViewModel.storeFlow.collect {
-                Log.d("lukaTest", "observer: ${it.data} ")
                 storeAdapter.submitList(it.data?.sneakers)
             }
         }

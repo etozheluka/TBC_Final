@@ -3,6 +3,7 @@ package com.example.tbc_final.di
 
 import com.example.tbc_final.data.remote.okhttp.HttpClient
 import com.example.tbc_final.data.remote.service.BodyPartApiInterface
+import com.example.tbc_final.data.remote.service.NutritionApiInterface
 import com.example.tbc_final.data.remote.service.StoreApi
 import com.example.tbc_final.data.repository.remote.StoreRepositoryImpl
 import com.example.tbc_final.domain.repository.remote.StoreRepository
@@ -14,6 +15,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -24,7 +26,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofitInstance(): Retrofit = Retrofit.Builder()
-
         .baseUrl("https://exercisedb.p.rapidapi.com/exercises/bodyPart/")
         .addConverterFactory(
             MoshiConverterFactory.create(
@@ -45,6 +46,12 @@ object AppModule {
     @Singleton
     fun provideStoreApi(retrofit: Retrofit): StoreApi {
         return retrofit.newBuilder().baseUrl("https://run.mocky.io/v3/").build().create(StoreApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNutritionApi(retrofit: Retrofit):NutritionApiInterface {
+        return retrofit.newBuilder().baseUrl("https://api.calorieninjas.com").build().create(NutritionApiInterface::class.java)
     }
 
     @Provides
