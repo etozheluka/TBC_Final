@@ -1,10 +1,12 @@
 package com.example.tbc_final.domain.model
 
+import com.example.tbc_final.presentation.adapter.base.BaseDiff
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class SneakerModel(
     val sneakers: List<Sneaker?>?
-) {
+): Serializable {
     data class Sneaker(
         @Json(name = "box_condition")
         val boxCondition: String?,
@@ -53,5 +55,16 @@ data class SneakerModel(
         val storyHtml: String?,
         @Json(name = "upper_material")
         val upperMaterial: String?
-    )
+    ) : BaseDiff<Sneaker>(), Serializable {
+
+        override val inner: Sneaker
+            get() = this
+
+        override val uniqueValue: Any
+            get() = id ?: ""
+
+        override fun compareTo(other: Any?): Boolean {
+            return other is Sneaker && this == other
+        }
+    }
 }
