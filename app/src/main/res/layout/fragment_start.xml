@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.StartFragment"
-    android:background="@drawable/start_background">
+    tools:context=".presentation.main.StartFragment"
+    android:background="@drawable/home_back">
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -13,7 +13,10 @@
         android:layout_width="207dp"
         android:layout_height="52dp"
         android:layout_marginBottom="8dp"
-        android:text="Running App"
+        android:fontFamily="@font/poppins"
+        android:text="@string/running_app"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -25,7 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:text="Run and earn with our app"
+        android:fontFamily="@font/poppins"
+        android:text="@string/improve_your_running_skills"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,10 +41,11 @@
         android:layout_height="59dp"
         android:layout_marginBottom="64dp"
         android:background="@drawable/rounded_btn"
-        android:text="Get Started"
-        android:textStyle="normal"
-        android:textSize="15sp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/get_started"
         android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

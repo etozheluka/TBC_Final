@@ -2,22 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/vector"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
-        android:id="@+id/leaderBoard"
+        android:id="@+id/BodyPartFragment"
         android:icon="@drawable/cup"
-        android:title="Leaderboard"
-
-        />
+        android:title="@string/exercises" />
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/user"
-        android:title="Profile" />
+        android:id="@+id/nutritionFragment"
+        android:icon="@drawable/ic_food"
+        android:title="@string/nutrition" />
 
     <item
-        android:id="@+id/store"
+        android:id="@+id/storeFragment"
         android:icon="@drawable/store"
-        android:title="Store" />
+        android:title="@string/store" />
 </menu>
