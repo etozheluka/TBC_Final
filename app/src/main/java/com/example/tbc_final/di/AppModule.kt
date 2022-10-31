@@ -20,31 +20,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-//
-//    @Provides
-//    @Singleton
-//    fun provideRetrofitInstance(): Retrofit = Retrofit.Builder()
-//        .client(HttpClient.okHttpClient)
-//        .baseUrl("https://exercisedb.p.rapidapi.com/exercises/bodyPart/")
-//        .addConverterFactory(
-//            MoshiConverterFactory.create(
-//                Moshi.Builder()
-//                    .addLast(KotlinJsonAdapterFactory())
-//                    .build()
-//            )
-//        )
-//        .build()
-
-
-    @Singleton
-    @Provides
-    fun provideApi(retrofit: Retrofit): BodyPartApiInterface = retrofit.create(BodyPartApiInterface::class.java)
-
 
     @Provides
     @Singleton
-    fun provideRetrofitStoreInstance(): Retrofit = Retrofit.Builder()
-        .baseUrl("https://run.mocky.io/v3/")
+    fun provideRetrofitInstance(): Retrofit = Retrofit.Builder()
+
+        .baseUrl("https://exercisedb.p.rapidapi.com/exercises/bodyPart/")
         .addConverterFactory(
             MoshiConverterFactory.create(
                 Moshi.Builder()
@@ -54,10 +35,16 @@ object AppModule {
         )
         .build()
 
+
+    @Singleton
+    @Provides
+    fun provideApi(retrofit: Retrofit): BodyPartApiInterface = retrofit.newBuilder().client(HttpClient.okHttpClient).build().create(BodyPartApiInterface::class.java)
+
+
     @Provides
     @Singleton
     fun provideStoreApi(retrofit: Retrofit): StoreApi {
-        return retrofit.create(StoreApi::class.java)
+        return retrofit.newBuilder().baseUrl("https://run.mocky.io/v3/").build().create(StoreApi::class.java)
     }
 
     @Provides

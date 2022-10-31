@@ -44,4 +44,5 @@
     <string name="sample_sneaker">Nike air force 1</string>
     <string name="invalid">Invalid Credentials</string>
     <string name="registered">This email is already registered</string>
+    <string name="not_supported">Your Device Is Not Supported</string>
 </resources>

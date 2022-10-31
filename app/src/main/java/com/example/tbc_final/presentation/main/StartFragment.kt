@@ -7,7 +7,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.databinding.FragmentStartBinding
+import com.example.tbc_final.presentation.auth.login.LogInFragmentDirections
 import com.example.tbc_final.presentation.base.BaseFragment
+import com.google.firebase.auth.FirebaseAuth
 
 
 class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
@@ -18,6 +20,12 @@ class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::i
         binding?.button?.setOnClickListener {
             findNavController().navigate(StartFragmentDirections.actionStartFragmentToLogInFragment())
         }
+
+        //TEST FUNC
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            findNavController().navigate(StartFragmentDirections.actionStartFragmentToHomeFragment())
+        }
+        //TEST FUNC
     }
 
     private fun checkPermission() {

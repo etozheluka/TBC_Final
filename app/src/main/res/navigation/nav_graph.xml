@@ -71,6 +71,12 @@
             app:destination="@id/calculatorFragment"
             app:enterAnim="@anim/from_bottom"
             app:popEnterAnim="@anim/from_top" />
+        <action
+            android:id="@+id/action_homeFragment_to_logInFragment"
+            app:destination="@id/logInFragment"
+            app:enterAnim="@anim/back_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"

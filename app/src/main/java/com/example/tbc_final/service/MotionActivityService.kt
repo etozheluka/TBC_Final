@@ -24,6 +24,7 @@ import com.example.tbc_final.domain.repository.local.StepPreferencesRepository
 import com.example.tbc_final.domain.use_case.preferences.GetStepUseCase
 import com.example.tbc_final.domain.use_case.preferences.PutStepUseCase
 import com.example.tbc_final.presentation.home.HomeFragment.Companion.RECEIVER_TAG
+import com.google.firebase.FirebaseApp
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import java.util.*
@@ -65,6 +66,7 @@ class MotionActivityService: Service() {
         super.onCreate()
         setUpService()
         setUpSensor()
+
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -109,7 +111,7 @@ class MotionActivityService: Service() {
         if (stepSensor != null) {
             sensorManager.registerListener(sensorListener, stepSensor, SensorManager.SENSOR_DELAY_FASTEST)
         } else {
-            Toast.makeText(this, "Your Device Is Not Supported", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -185,7 +187,7 @@ class MotionActivityService: Service() {
                 runBlocking {
                     putStepUseCase.putStep(todaySteps.toString())
                     putStepUseCase.putPoints(points.toString())
-                } //TODO runblocking problme ?
+                }
                 bundle.putInt(KEY_STEPS, todaySteps)
                 bundle.putInt(KEY_POINTS, points)
 
@@ -199,10 +201,8 @@ class MotionActivityService: Service() {
             for (i in 0 until motionUpdateService.size()) {
                 val motionActivity = motionUpdateService.valueAt(i)
                 val activityBundle = Bundle()
-                activityBundle.putInt(KEY_ID, motionActivity.id)//???
                 activityBundle.putInt(KEY_STEPS, motionActivity.steps)
                 activityBundle.putInt(KEY_TOTAL, motionActivity.steps)
-                activityBundle.putBoolean(KEY_ACTIVE, motionActivity.active)//??
             }
             it.send(0, bundle)
         }
@@ -211,8 +211,8 @@ class MotionActivityService: Service() {
     companion object{
         internal const val ACTION_SUBSCRIBE = "ACTION_SUBSCRIBE"
         private const val ACTION_START_ACTIVITY = "ACTION_START_ACTIVITY"
-        private const val ACTION_STOP_ACTIVITY = "ACTION_STOP_ACTIVITY"
-        private const val ACTION_TOGGLE_ACTIVITY = "ACTION_TOGGLE_ACTIVITY"
+        internal const val ACTION_STOP_ACTIVITY = "ACTION_STOP_ACTIVITY"
+        internal const val ACTION_TOGGLE_ACTIVITY = "ACTION_TOGGLE_ACTIVITY"
         private const val KEY_ID = "ID"
         internal const val KEY_STEPS = "STEPS"
         internal const val KEY_POINTS = "POINTS"

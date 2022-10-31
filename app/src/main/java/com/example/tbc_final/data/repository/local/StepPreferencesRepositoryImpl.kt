@@ -6,7 +6,13 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.example.tbc_final.data.repository.local.StepPreferencesRepositoryImpl.Companion.KEY_TOTAL_GOAL
 import com.example.tbc_final.domain.repository.local.StepPreferencesRepository
+import com.example.tbc_final.service.MotionActivityService.Companion.KEY_POINTS
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
@@ -14,13 +20,20 @@ import java.io.IOException
 import javax.inject.Inject
 
 class StepPreferencesRepositoryImpl @Inject constructor(
-    private val stepPreferences: DataStore<Preferences>
+    private val stepPreferences: DataStore<Preferences>,
+    user:FirebaseAuth
 ): StepPreferencesRepository {
+
+
+    private val auth = user.currentUser?.email
+
+
 
     override suspend fun putPoints(points: String) {
         Result.runCatching {
+
             stepPreferences.edit {preferences ->
-                preferences[stringPreferencesKey(KEY_POINTS)] = points
+                preferences[stringPreferencesKey("$auth P")] = points
 
             }
         }
@@ -29,7 +42,7 @@ class StepPreferencesRepositoryImpl @Inject constructor(
     override suspend fun putStep(steps: String) {
         Result.runCatching {
             stepPreferences.edit {preferences ->
-                preferences[stringPreferencesKey(KEY_GOAL)] = steps
+                preferences[stringPreferencesKey("$auth G")] = steps
 
             }
         }
@@ -38,7 +51,7 @@ class StepPreferencesRepositoryImpl @Inject constructor(
     override suspend fun putTotalStep(steps: String) {
         Result.runCatching {
             stepPreferences.edit {preferences ->
-                preferences[stringPreferencesKey(KEY_TOTAL_GOAL)] = steps
+                preferences[stringPreferencesKey("$auth TG")] = steps
 
             }
         }
@@ -54,7 +67,7 @@ class StepPreferencesRepositoryImpl @Inject constructor(
                 }
             }
                 .map {
-                    it[stringPreferencesKey(KEY_GOAL)]
+                    it[stringPreferencesKey("$auth G")]
                 }
             val value = flow.firstOrNull() ?: "0"
             value
@@ -71,7 +84,7 @@ class StepPreferencesRepositoryImpl @Inject constructor(
                 }
             }
                 .map {
-                    it[stringPreferencesKey(KEY_TOTAL_GOAL)]
+                    it[stringPreferencesKey("$auth TG")]
                 }
             val value = flow.firstOrNull() ?: "0"
             value
@@ -88,7 +101,7 @@ class StepPreferencesRepositoryImpl @Inject constructor(
                 }
             }
                 .map {
-                    it[stringPreferencesKey(KEY_POINTS)]
+                    it[stringPreferencesKey("$auth P")]
                 }
             val value = flow.firstOrNull() ?: "0"
             value
@@ -96,8 +109,9 @@ class StepPreferencesRepositoryImpl @Inject constructor(
     }
 
     companion object{
-        private const val KEY_GOAL = "goalKey"
-        private const val KEY_TOTAL_GOAL = "totalKey"
-        private const val KEY_POINTS = "points"
+
+        private val KEY_GOAL = " GOAL"
+        private val KEY_TOTAL_GOAL = " TOTAL"
+        private val KEY_POINTS = " POINTS"
     }
 }

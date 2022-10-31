@@ -12,6 +12,7 @@ import com.example.tbc_final.presentation.auth.signup.RegisterFragmentDirections
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.utils.extensions.isValidEmail
 import com.example.tbc_final.utils.extensions.toast
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -23,6 +24,8 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
     override fun onBind() {
         listener()
         observer()
+
+
     }
 
 
