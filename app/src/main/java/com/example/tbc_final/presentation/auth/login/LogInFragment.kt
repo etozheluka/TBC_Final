@@ -12,6 +12,7 @@ import com.example.tbc_final.presentation.auth.signup.RegisterFragmentDirections
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.utils.extensions.isValidEmail
 import com.example.tbc_final.utils.extensions.toast
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -23,6 +24,8 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
     override fun onBind() {
         listener()
         observer()
+
+
     }
 
 
@@ -32,6 +35,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
                 email = email,
                 password = password
             )
+
         }
     }
 
@@ -40,7 +44,9 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
             logInViewModel.logInFlow.collect {
                 it?.let {
                     findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
-                } ?: toast(getString(R.string.error))
+                } ?: binding?.emailInputLayout?.apply {
+                    error = context.getString(R.string.invalid)
+                }
             }
         }
     }
@@ -74,9 +80,9 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
         binding?.apply {
             logInBtn.setOnClickListener {
-                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
+//                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToHomeFragment2())
 
-//               validation()
+               validation()
 
             }
             logInTVSignUp.setOnClickListener {

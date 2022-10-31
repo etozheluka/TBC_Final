@@ -1,5 +1,6 @@
 package com.example.tbc_final.data.repository.remote
 
+
 import com.example.tbc_final.utils.common.FirebaseServiceHandler
 import com.example.tbc_final.utils.common.UiState
 import com.example.tbc_final.domain.repository.remote.LoginRepository
@@ -14,7 +15,12 @@ import javax.inject.Inject
 class LoginRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) :
     FirebaseServiceHandler(), LoginRepository {
     override suspend fun login(email: String, password: String): FirebaseUser? {
-        val result = auth.signInWithEmailAndPassword(email, password)
-        return result.await().user
+        return try {
+            val result = auth.signInWithEmailAndPassword(email, password)
+            result.await().user
+        }catch (e:java.lang.Exception){
+            null
+        }
+
     }
 }

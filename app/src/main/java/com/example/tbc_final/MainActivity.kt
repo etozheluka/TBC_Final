@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.storeFragment,
-                R.id.leaderFragment,
+                R.id.nutritionFragment,
                 R.id.historyFragment,
             )
         )
@@ -60,11 +60,12 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
+                R.id.logInFragment -> navView.visibility = View.GONE
                 R.id.exerciseFragment -> navView.visibility = View.GONE
                 R.id.calculatorFragment -> navView.visibility = View.GONE
                 R.id.homeFragment -> navView.visibility = View.VISIBLE
                 R.id.storeFragment -> navView.visibility = View.VISIBLE
-                R.id.leaderFragment -> navView.visibility = View.VISIBLE
+                R.id.BodyPartFragment -> navView.visibility = View.VISIBLE
                 R.id.historyFragment -> navView.visibility = View.VISIBLE
             }
         }

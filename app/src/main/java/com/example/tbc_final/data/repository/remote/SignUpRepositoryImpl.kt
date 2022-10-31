@@ -8,7 +8,13 @@ import javax.inject.Inject
 
 class SignUpRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : SignUpRepository {
     override suspend fun signUp(email: String, password: String): FirebaseUser? {
-        val result = auth.createUserWithEmailAndPassword(email, password)
-        return result.await().user
+
+        return try {
+            val result = auth.createUserWithEmailAndPassword(email, password)
+            return result.await().user
+        }catch (e:java.lang.Exception){
+            null
+        }
+
     }
 }

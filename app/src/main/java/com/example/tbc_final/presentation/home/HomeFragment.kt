@@ -3,11 +3,16 @@ package com.example.tbc_final.presentation.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.ResultReceiver
+import android.util.Log
 import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHomeBinding
 import com.example.tbc_final.service.MotionActivityService
 import com.example.tbc_final.presentation.base.BaseFragment
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
@@ -29,6 +34,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
 
         toCalc()
+
+        //TEST LOG OUT BUTTON
+        binding?.logOutBtn?.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val i = Intent(requireContext(),MotionActivityService::class.java)
+            i.action = MotionActivityService.ACTION_STOP_ACTIVITY
+            requireContext().stopService(i)
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLogInFragment())
+        }
+
+        //TEST LOG OUT BUTTON
     }
 
 

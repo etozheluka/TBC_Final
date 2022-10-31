@@ -8,8 +8,10 @@ import androidx.datastore.preferences.preferencesDataStoreFile
 
 import com.example.tbc_final.data.repository.remote.BodyPartRepositoryImpl
 import com.example.tbc_final.data.repository.local.StepPreferencesRepositoryImpl
+import com.example.tbc_final.data.repository.remote.NutritionRepositoryImpl
 import com.example.tbc_final.domain.repository.remote.BodyPartRepository
 import com.example.tbc_final.domain.repository.local.StepPreferencesRepository
+import com.example.tbc_final.domain.repository.remote.NutritionRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -27,6 +29,12 @@ abstract class RepositoryModule {
     abstract fun bindStepPreferencesRepository(
         stepPreferencesRepositoryImpl: StepPreferencesRepositoryImpl
     ): StepPreferencesRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindNutritionRepository(
+        nutritionRepositoryImpl: NutritionRepositoryImpl
+    ): NutritionRepository
 
 
     @Binds

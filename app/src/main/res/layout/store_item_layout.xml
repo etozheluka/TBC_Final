@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="#2F3C50">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/shoesImageView"
         android:padding="2dp"
         android:layout_width="196dp"
@@ -18,16 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/shoes" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/shoeNameTV"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:padding="5dp"
-        android:text="Nike air force 1"
+        android:text="@string/sample_sneaker"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
