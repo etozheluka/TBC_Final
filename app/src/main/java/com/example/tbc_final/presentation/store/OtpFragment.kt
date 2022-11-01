@@ -1,6 +1,7 @@
 package com.example.tbc_final.presentation.store
 
 import android.text.TextUtils
+import android.util.Log
 import com.example.tbc_final.databinding.FragmentOtpBinding
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.utils.extensions.toast
@@ -25,7 +26,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
             if (TextUtils.isEmpty(binding?.idEdtPhoneNumber?.text.toString())) {
                 toast("Please enter a valid phone number.")
             } else {
-                var phone = "+995" + binding?.idEdtPhoneNumber?.text.toString()
+                val phone = "+995" + binding?.idEdtPhoneNumber?.text.toString()
                 sendVerificationCode(phone)
             }
         }
@@ -54,8 +55,8 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
 
         val options = PhoneAuthOptions.newBuilder(mAuth)
             .setPhoneNumber(number)
-            .setTimeout(60L, TimeUnit.SECONDS)
-            .setActivity(this.requireActivity())
+            .setTimeout(3L, TimeUnit.SECONDS)
+            .setActivity(requireActivity())
             .setCallbacks(mCallBack)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
@@ -78,6 +79,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
                     binding?.idEdtOtp!!.setText(code)
                     verifyCode(code)
                 }
+                toast("success")
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
