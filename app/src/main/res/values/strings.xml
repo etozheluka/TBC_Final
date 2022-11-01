@@ -59,4 +59,6 @@
     <string name="exercises">Exercises</string>
     <string name="upper_legs">Upper Legs</string>
     <string name="sneaker_shop">Sneaker Shop</string>
+    <string name="featured_sneakers">Featured Sneakers :</string>
+    <string name="our_products">Our Products:</string>
 </resources>
