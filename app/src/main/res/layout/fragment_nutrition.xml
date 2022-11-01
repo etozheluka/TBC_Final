@@ -8,6 +8,18 @@
     tools:context=".presentation.nutrition.NutritionFragment">
 
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculateBtn"
+        app:layout_constraintVertical_bias="0.416" />
+
     <TextView
         android:id="@+id/grams"
         android:layout_width="wrap_content"
@@ -55,7 +67,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/productInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -79,9 +91,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/layout_bg"
-            android:digits="@string/digits"
             android:fontFamily="@font/poppins"
-            android:inputType="textCapSentences"
+            android:inputType="text|textNoSuggestions"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="22sp" />

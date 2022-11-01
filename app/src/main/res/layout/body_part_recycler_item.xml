@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_marginTop="12dp"
     android:layout_height="wrap_content">
 
@@ -16,30 +15,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/blankcard" />
+        app:layout_constraintVertical_bias="0.029"
+        app:srcCompat="@drawable/body_part_frame" />
+
+
 
     <TextView
         android:id="@+id/bodyPart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="120dp"
         android:fontFamily="@font/poppins"
-        android:text="TextView"
+        android:text="@string/upper_legs"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
         app:layout_constraintTop_toTopOf="@+id/imageView16" />
 
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/bodyPartIc"
+        android:layout_width="120dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
-        app:srcCompat="@drawable/ic_expand" />
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/imageView16"
+        app:layout_constraintTop_toTopOf="@+id/imageView16"
+        app:srcCompat="@drawable/upper_body_muscular_view_svgrepo_com" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

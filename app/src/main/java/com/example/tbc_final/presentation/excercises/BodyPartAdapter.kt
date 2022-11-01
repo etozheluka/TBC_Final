@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbc_final.databinding.BodyPartRecyclerItemBinding
 import com.example.tbc_final.utils.BodyPartEnum
+import com.example.tbc_final.utils.extensions.setImage
 
 typealias onClick = (content: BodyPartEnum) -> Unit
 
@@ -42,6 +43,7 @@ class BodyPartAdapter:RecyclerView.Adapter<BodyPartAdapter.ViewHolder>() {
             currentItem = content[adapterPosition]
             binding.apply {
                 bodyPart.text = currentItem.bodyPart
+                bodyPartIc.setImageResource(currentItem.icon)
                 root.setOnClickListener {
                     onClick(
                         currentItem

@@ -32,14 +32,12 @@ class ExerciseAdapter: ListAdapter<BodyExercisesModel, ExerciseAdapter.ViewHolde
             content = getItem(adapterPosition)
 
             binding.apply {
-                exName.text = content.name?.replaceFirstChar {
+                name.text = content.name?.replaceFirstChar {
                     if (it.isLowerCase()) it.titlecase(
                         Locale.ROOT
                     ) else it.toString()
                 }
-                gifImage.setImage(content.gifUrl!!)
-                exEquipment.text = content.equipment
-                exTarget.text = content.target
+                roundedImageView.setImage(content.gifUrl!!)
             }
         }
 

@@ -15,7 +15,6 @@ class StoreAdapter : BaseAdapter<SneakerModel.Sneaker, StoreItemLayoutBinding>(S
         val currentItem = currentList[position]
         binding.apply {
             shoeNameTV.text = content.name
-            itemCostTV.text = content.retailPriceCents.toString()
             shoesImageView.setImage(content.mainPictureUrl!!)
             this.root.setOnClickListener { itemClick?.invoke(currentItem) }
         }
