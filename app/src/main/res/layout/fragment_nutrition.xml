@@ -55,7 +55,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/productInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -79,9 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/layout_bg"
-            android:digits="@string/digits"
             android:fontFamily="@font/poppins"
-            android:inputType="textCapSentences"
+            android:inputType="text|textNoSuggestions"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="22sp" />

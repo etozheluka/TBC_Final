@@ -53,8 +53,10 @@
     <string name="height">Height</string>
     <string name="product">Product :</string>
     <string name="product_">Product</string>
-    <string name="digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ </string>
     <string name="nutr">Nutrition</string>
     <string name="nutrition">Nutrition</string>
     <string name="exercises">Exercises</string>
+    <string name="upper_legs">Upper Legs</string>
+    <string name="sneaker_shop">Sneaker Shop</string>
 </resources>

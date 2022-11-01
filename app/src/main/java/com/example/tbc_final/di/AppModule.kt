@@ -37,6 +37,7 @@ object AppModule {
         .build()
 
 
+    // TODO REPOSITORY PROVIDES -> BINDS()
     @Singleton
     @Provides
     fun provideApi(retrofit: Retrofit): BodyPartApiInterface = retrofit.newBuilder().client(HttpClient.okHttpClient).build().create(BodyPartApiInterface::class.java)
