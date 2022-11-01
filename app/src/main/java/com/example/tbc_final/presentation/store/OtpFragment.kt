@@ -1,7 +1,7 @@
 package com.example.tbc_final.presentation.store
 
 import android.text.TextUtils
-import android.util.Log
+import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.databinding.FragmentOtpBinding
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.utils.extensions.toast
@@ -40,17 +40,20 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
         }
     }
 
+    //viewmodelshi
     private fun signInWithCredential(credential: PhoneAuthCredential) {
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    toast("success")
+                  //  toast("success")
+                    findNavController().navigate(OtpFragmentDirections.actionOtpFragmentToOrderFinishFragment())
                 } else {
                     toast(task.exception!!.message)
                 }
             }
     }
 
+    //vmshi
     private fun sendVerificationCode(number: String) {
 
         val options = PhoneAuthOptions.newBuilder(mAuth)
