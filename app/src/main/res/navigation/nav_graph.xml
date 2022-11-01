@@ -142,10 +142,17 @@
         android:label="OrderFragment" >
         <argument android:name="item"
             app:argType="com.example.tbc_final.domain.model.SneakerModel$Sneaker" />
+        <action
+            android:id="@+id/action_orderFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
     </fragment>
     <fragment
         android:id="@+id/nutritionFragment"
         android:name="com.example.tbc_final.presentation.nutrition.NutritionFragment"
         android:label="fragment_nutrition"
         tools:layout="@layout/fragment_nutrition" />
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.tbc_final.presentation.store.OtpFragment"
+        android:label="OtpFragment" />
 </navigation>

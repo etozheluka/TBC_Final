@@ -1,6 +1,7 @@
 package com.example.tbc_final.presentation.store
 
 import androidx.core.text.HtmlCompat
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tbc_final.databinding.FragmentOrderBinding
 import com.example.tbc_final.domain.model.SneakerModel
@@ -15,7 +16,12 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(FragmentOrderBinding::i
         val item = navigationArgs.item
         setData(item)
 
+        binding?.orderBtn?.setOnClickListener{
+            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToOtpFragment())
+        }
+
     }
+
 
     private fun setData(item:  SneakerModel.Sneaker) {
         binding.apply {
