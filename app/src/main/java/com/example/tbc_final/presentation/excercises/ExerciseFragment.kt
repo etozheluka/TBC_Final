@@ -1,5 +1,6 @@
 package com.example.tbc_final.presentation.excercises
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -8,7 +9,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.tbc_final.databinding.FragmentExerciseBinding
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.utils.BodyPartEnum
+import com.example.tbc_final.utils.common.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ExerciseFragment : BaseFragment<FragmentExerciseBinding>(FragmentExerciseBinding::inflate) {
@@ -72,6 +75,15 @@ class ExerciseFragment : BaseFragment<FragmentExerciseBinding>(FragmentExerciseB
                             adapter.submitList(it.data)
                         }
                     }
+                }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.body.collect{
+                if(it.status == Resource.Status.LOADING){
+                    binding?.progressBar?.visibility = View.VISIBLE
+                }else{
+                    binding?.progressBar?.visibility = View.GONE
                 }
             }
         }

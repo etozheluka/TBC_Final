@@ -17,6 +17,7 @@ import com.example.tbc_final.databinding.FragmentNutritionBinding
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.presentation.calculator.CalculatorViewModel
 import com.example.tbc_final.presentation.store.StoreAdapter
+import com.example.tbc_final.utils.common.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -55,7 +56,12 @@ class NutritionFragment : BaseFragment<FragmentNutritionBinding>(FragmentNutriti
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.nutritionFlow.collect {
-                    nutritionAdapter.submitList(it.data?.items)
+                   if (it.status == Resource.Status.LOADING){
+                       binding?.progressBar?.visibility = View.VISIBLE
+                   }else{
+                       binding?.progressBar?.visibility = View.GONE
+                       nutritionAdapter.submitList(it.data?.items)
+                   }
                 }
             }
         }
