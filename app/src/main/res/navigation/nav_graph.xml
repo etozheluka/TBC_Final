@@ -77,6 +77,9 @@
             app:enterAnim="@anim/back_anim"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoritesFragment2"
+            app:destination="@id/favoritesFragment2" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -158,4 +161,9 @@
         android:name="com.example.tbc_final.presentation.nutrition.NutritionFragment"
         android:label="fragment_nutrition"
         tools:layout="@layout/fragment_nutrition" />
+    <fragment
+        android:id="@+id/favoritesFragment2"
+        android:name="com.example.tbc_final.presentation.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
 </navigation>

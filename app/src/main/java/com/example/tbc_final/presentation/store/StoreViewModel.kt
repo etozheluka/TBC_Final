@@ -36,17 +36,16 @@ class StoreViewModel @Inject constructor(private val storeRepository: StoreRepos
 
 
     }
-    fun filterHorizontal( data: List<SneakerModel.Sneaker?>?,adapter: HorizontalAdapter) {
-
-
-        val filteredStore = ArrayList<SneakerModel.Sneaker?>()
-
-        data?.filterTo(filteredStore) { item ->
-            item?.category?.contains("running") ?: true
-        }
-
-        adapter.submitList(filteredStore)
-
+//    fun filterHorizontal( data: List<SneakerModel.Sneaker?>?,adapter: HorizontalAdapter) {
+//
+//
+//        val filteredStore = ArrayList<SneakerModel.Sneaker?>()
+//
+//        data?.filterTo(filteredStore) { item ->
+//            item?.category?.contains("running") ?: true
+//        }
+//
+//        adapter.submitList(filteredStore)
+//
 
     }
-}
