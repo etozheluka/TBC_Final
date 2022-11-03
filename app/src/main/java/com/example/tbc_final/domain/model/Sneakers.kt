@@ -1,7 +1,7 @@
 package com.example.tbc_final.domain.model
 
 import android.os.Parcelable
-import com.example.tbc_final.presentation.adapter.base.BaseDiff
+import com.example.tbc_final.presentation.base.BaseDiff
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

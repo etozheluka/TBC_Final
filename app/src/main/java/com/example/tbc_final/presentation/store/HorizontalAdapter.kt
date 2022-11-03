@@ -1,9 +1,8 @@
 package com.example.tbc_final.presentation.store
 
 import com.example.tbc_final.databinding.HorizontalStoreItemBinding
-import com.example.tbc_final.databinding.StoreItemLayoutBinding
 import com.example.tbc_final.domain.model.SneakerModel
-import com.example.tbc_final.presentation.adapter.base.BaseAdapter
+import com.example.tbc_final.presentation.base.BaseAdapter
 import com.example.tbc_final.utils.extensions.setImage
 
 class HorizontalAdapter:

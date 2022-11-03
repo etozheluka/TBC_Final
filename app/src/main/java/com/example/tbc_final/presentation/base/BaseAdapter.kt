@@ -1,4 +1,4 @@
-package com.example.tbc_final.presentation.adapter.base
+package com.example.tbc_final.presentation.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.example.tbc_final.presentation.base.Inflate
 
 
 abstract class BaseAdapter<T : BaseDiff<T>, VB : ViewBinding>(private val inflater: Inflate<VB>) :
