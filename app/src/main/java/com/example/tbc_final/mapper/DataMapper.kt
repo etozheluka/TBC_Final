@@ -4,21 +4,7 @@ import com.example.tbc_final.data.local.entity.FavoritesEntity
 import com.example.tbc_final.domain.model.SneakerModel
 
 object DataMapper {
-
-    fun sneakerModelListToSneakersList(mangaList: List<SneakerModel.Sneaker>?): List<Sneakers> {
-        val sneakers = mutableListOf<Sneakers>()
-        mangaList?.forEach {
-            val manga = Sneakers(
-                id = it.id,
-                name = it.name,
-                mainPictureUrl = it.mainPictureUrl,
-                isFavorite = it.isFavorite
-            )
-            sneakers.add(manga)
-        }
-        return sneakers
-    }
-
+    
     fun mapFavoriteEntitiesToDomain(input: List<FavoritesEntity>): List<Sneakers> {
         val sneakers = mutableListOf<Sneakers>()
         input.forEach {

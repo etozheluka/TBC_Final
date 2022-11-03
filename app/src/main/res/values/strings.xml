@@ -67,4 +67,5 @@ Suspendisse euismod arcu ac nisi molestie, iaculis malesuada nisl aliquet. Mauri
     <string name="order">order</string>
     <string name="_16000">16000 $</string>
     <string name="nike_air_force_1">NIKE Air Force 1</string>
+    <string name="favorites">Favorites</string>
 </resources>

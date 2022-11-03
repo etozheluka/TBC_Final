@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbc_final.databinding.BodyPartRecyclerItemBinding
 import com.example.tbc_final.utils.BodyPartEnum
-import com.example.tbc_final.utils.extensions.setImage
 
 typealias onClick = (content: BodyPartEnum) -> Unit
 

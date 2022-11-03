@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment,
                 R.id.storeFragment,
                 R.id.nutritionFragment,
-                R.id.historyFragment,
+                R.id.storeFragment,
+                R.id.favoritesFragment2
             )
         )
 
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> navView.visibility = View.VISIBLE
                 R.id.storeFragment -> navView.visibility = View.VISIBLE
                 R.id.BodyPartFragment -> navView.visibility = View.VISIBLE
-                R.id.historyFragment -> navView.visibility = View.VISIBLE
+                R.id.orderFragment -> navView.visibility = View.GONE
             }
         }
 

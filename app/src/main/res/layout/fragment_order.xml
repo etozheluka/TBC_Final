@@ -67,48 +67,52 @@
         android:id="@+id/scroll"
         android:layout_width="370dp"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/orderBtn"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceTV"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/priceTV">
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginVertical="36dp"
-            android:fontFamily="@font/poppins"
-            android:isScrollContainer="true"
-            android:padding="16dp"
-            android:textColor="@color/light_blue_50"
-            app:layout_constraintBottom_toTopOf="@+id/orderBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/priceTV"
-            tools:text="description goes here..." />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:isScrollContainer="true"
+                android:padding="4dp"
+                android:textColor="@color/light_blue_50"
+                app:layout_constraintBottom_toTopOf="@+id/orderBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceTV"
+                tools:text="description goes here..." />
+
+        </LinearLayout>
 
 
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/orderBtn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="36dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="68dp"
         android:backgroundTint="#7B61FF"
-        android:paddingVertical="16dp"
+        android:ems="19"
+        android:padding="12dp"
         android:text="@string/order"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scroll"
         app:rippleColor="@color/under" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
