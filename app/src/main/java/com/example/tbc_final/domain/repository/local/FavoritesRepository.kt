@@ -1,6 +1,6 @@
 package com.example.tbc_final.domain.repository.local
 
-import com.example.tbc_final.mapper.Sneakers
+import com.example.tbc_final.domain.model.Sneakers
 
 interface FavoritesRepository {
 
