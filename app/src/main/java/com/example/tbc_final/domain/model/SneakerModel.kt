@@ -1,7 +1,6 @@
 package com.example.tbc_final.domain.model
 
 import android.os.Parcelable
-import com.example.tbc_final.mapper.Sneakers
 import com.example.tbc_final.presentation.base.BaseDiff
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize

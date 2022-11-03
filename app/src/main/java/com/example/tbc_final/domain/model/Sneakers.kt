@@ -1,4 +1,4 @@
-package com.example.tbc_final.mapper
+package com.example.tbc_final.domain.model
 
 import android.os.Parcelable
 import com.example.tbc_final.presentation.base.BaseDiff

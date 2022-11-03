@@ -3,7 +3,7 @@ package com.example.tbc_final.data.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.tbc_final.mapper.Sneakers
+import com.example.tbc_final.domain.model.Sneakers
 
 @Entity(tableName = "favorite_sneakers")
 data class FavoritesEntity(
