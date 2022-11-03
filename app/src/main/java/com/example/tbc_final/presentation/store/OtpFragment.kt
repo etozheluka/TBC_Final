@@ -1,7 +1,11 @@
 package com.example.tbc_final.presentation.store
 
 import android.text.TextUtils
+import android.util.Log
+import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.databinding.FragmentOtpBinding
 import com.example.tbc_final.presentation.base.BaseFragment
@@ -11,9 +15,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
-
+@AndroidEntryPoint
 class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate) {
     private var verificationId: String? = null
     private lateinit var mAuth: FirebaseAuth
@@ -29,77 +36,79 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
             if (TextUtils.isEmpty(binding?.idEdtPhoneNumber?.text.toString())) {
                 toast("Please enter a valid phone number.")
             } else {
-                val phone = "+995" + binding?.idEdtPhoneNumber?.text.toString()
-                otpViewModel.sendVerificationCode(phone,requireActivity())
+                val phone = GEO + binding?.idEdtPhoneNumber?.text.toString()
+                otpViewModel.sendVerificationCode(phone, requireActivity(), mCallBack)
+
             }
+        }
+        binding?.back?.setOnClickListener {
+            binding?.apply {
+                back.visibility = View.GONE
+                idEdtPhoneNumber.visibility = View.VISIBLE
+                idBtnGetOtp.visibility = View.VISIBLE
+                idEdtOtp.visibility = View.GONE
+                idBtnVerify.visibility = View.GONE
+            }
+
         }
 
         binding?.idBtnVerify?.setOnClickListener {
             if (TextUtils.isEmpty(binding?.idEdtOtp?.text.toString())) {
                 toast("Please enter OTP")
             } else {
-                verifyCode(binding?.idEdtOtp?.text.toString())
+                signInWithCredential(
+                    otpViewModel.verifyCode(
+                        verificationId!!,
+                        binding?.idEdtOtp?.text.toString()
+                    )
+                )
             }
         }
+
     }
 
 
 
 
+    private fun signInWithCredential(credential: PhoneAuthCredential) {
+        mAuth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                findNavController().navigate(OtpFragmentDirections.actionOtpFragmentToOrderFinishFragment())
+            } else {
+                toast(task.exception!!.message)
+            }
+        }
 
-//    //viewmodelshi
-//    private fun signInWithCredential(credential: PhoneAuthCredential) {
-//        mAuth.signInWithCredential(credential)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                  //  toast("success")
-//                    findNavController().navigate(OtpFragmentDirections.actionOtpFragmentToOrderFinishFragment())
-//                } else {
-//                    toast(task.exception!!.message)
-//                }
-//            }
-//    }
-//
-//    //vmshi
-//    private fun sendVerificationCode(number: String) {
-//
-//        val options = PhoneAuthOptions.newBuilder(mAuth)
-//            .setPhoneNumber(number)
-//            .setTimeout(3L, TimeUnit.SECONDS)
-//            .setActivity(requireActivity())
-//            .setCallbacks(mCallBack)
-//            .build()
-//        PhoneAuthProvider.verifyPhoneNumber(options)
-//    }
-//
-//    private val mCallBack: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
-//        object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//
-//            override fun onCodeSent(
-//                s: String,
-//                forceResendingToken: PhoneAuthProvider.ForceResendingToken
-//            ) {
-//                super.onCodeSent(s, forceResendingToken)
-//                verificationId = s
-//            }
-//
-//            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-//                val code = phoneAuthCredential.smsCode
-//                if (code != null) {
-//                    binding?.idEdtOtp!!.setText(code)
-//                    verifyCode(code)
-//                }
-//                toast("success")
-//            }
-//
-//            override fun onVerificationFailed(e: FirebaseException) {
-//                toast("Error")
-//            }
-//        }
-
-    private fun verifyCode(code: String) {
-        val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
-        otpViewModel.signInWithCredential(credential)
     }
 
+    private val mCallBack: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
+        object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            override fun onCodeSent(
+                p0: String,
+                p1: PhoneAuthProvider.ForceResendingToken
+            ) {
+                super.onCodeSent(p0, p1)
+                verificationId = p0
+                binding?.apply {
+                    back.visibility = View.VISIBLE
+                    idEdtPhoneNumber.visibility = View.GONE
+                    idBtnGetOtp.visibility = View.GONE
+                    idEdtOtp.visibility = View.VISIBLE
+                    idBtnVerify.visibility = View.VISIBLE
+
+                }
+
+            }
+
+            override fun onVerificationCompleted(p0: PhoneAuthCredential) {}
+
+            override fun onVerificationFailed(p0: FirebaseException) {}
+
+        }
+
+
+    companion object {
+        private const val GEO = "+995"
+    }
 }
