@@ -43,14 +43,14 @@
             android:id="@+id/circularProgressBar"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="8dp"
             app:cpb_progress_max="2000"
             app:cpb_progressbar_color="#F14985"
             app:cpb_round_border="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.838"
+            app:layout_constraintHorizontal_bias="0.841"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivMenuIcon" />
+            app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
         <TextView
             android:id="@+id/stepsCurrent"

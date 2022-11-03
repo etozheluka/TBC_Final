@@ -54,7 +54,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         //TEST LOG OUT BUTTON
     }
-
     private fun navigation(){
         val appBarConfiguration = AppBarConfiguration(navController.graph, binding?.drawerLayout)
 
