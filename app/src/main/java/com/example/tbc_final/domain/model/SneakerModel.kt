@@ -21,6 +21,7 @@ data class SneakerModel(
         val retailPriceCents: Int?,
         @Json(name = "story_html")
         val storyHtml: String?,
+        val category: List<String?>?,
         var isFavorite: Boolean = false,
 
         ) : BaseDiff<Sneaker>(), Serializable,Parcelable {

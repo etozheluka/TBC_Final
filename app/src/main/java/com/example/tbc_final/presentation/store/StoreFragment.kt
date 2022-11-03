@@ -41,7 +41,7 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(FragmentStoreBinding::i
                     }
                     Resource.Status.SUCCESS -> {
                         binding?.progressBar?.visibility = View.GONE
-                       // storeViewModel.filterHorizontal(it.data?.sneakers, horizontalAdapter)
+                        storeViewModel.filterHorizontal(it.data?.sneakers, horizontalAdapter)
                         storeAdapter.submitList(it.data?.sneakers)
                         setUpSearchBar(it.data?.sneakers)
                         binding?.searchEditText?.text?.clear()

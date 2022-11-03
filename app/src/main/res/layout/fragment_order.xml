@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTv" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/shoeIV"
         android:layout_width="311dp"
         android:layout_height="237dp"
@@ -38,7 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/poppins"
-        android:text="NIKE Air Force 1"
+        android:text="@string/nike_air_force_1"
         android:textAlignment="center"
         android:textColor="@color/gradient2"
         android:textSize="20sp"
@@ -53,30 +53,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
-        android:text="16000 $"
+        android:text="@string/_16000"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatTextView2"
+        app:layout_constraintBottom_toTopOf="@+id/scroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTv" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginVertical="36dp"
-        android:fontFamily="@font/poppins"
-        android:isScrollContainer="true"
-        android:padding="16dp"
-        android:textColor="@color/light_blue_50"
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="370dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toTopOf="@+id/orderBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceTV"
-        tools:text="description goes here..." />
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="36dp"
+            android:fontFamily="@font/poppins"
+            android:isScrollContainer="true"
+            android:padding="16dp"
+            android:textColor="@color/light_blue_50"
+            app:layout_constraintBottom_toTopOf="@+id/orderBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/priceTV"
+            tools:text="description goes here..." />
+
+
+    </ScrollView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/orderBtn"
@@ -86,13 +102,13 @@
         android:layout_marginBottom="116dp"
         android:backgroundTint="#7B61FF"
         android:paddingVertical="16dp"
-        android:text="order"
+        android:text="@string/order"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+        app:layout_constraintTop_toBottomOf="@+id/scroll"
         app:rippleColor="@color/under" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

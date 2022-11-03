@@ -5,7 +5,7 @@ import com.example.tbc_final.domain.model.SneakerModel
 
 object DataMapper {
 
-    fun SneakerModelListToSneakersList(mangaList: List<SneakerModel.Sneaker>?): List<Sneakers> {
+    fun sneakerModelListToSneakersList(mangaList: List<SneakerModel.Sneaker>?): List<Sneakers> {
         val sneakers = mutableListOf<Sneakers>()
         mangaList?.forEach {
             val manga = Sneakers(
@@ -33,19 +33,6 @@ object DataMapper {
         return sneakers
     }
 
-    fun mapResponsesToEntities(input: List<SneakerModel.Sneaker>): List<FavoritesEntity> {
-        val sneakerList = ArrayList<FavoritesEntity>()
-        input.map { it ->
-            val sneaker = FavoritesEntity(
-                id = it.id,
-                name = it.name,
-                mainPictureUrl = it.mainPictureUrl,
-                isFavorite = it.isFavorite
-            )
-            sneakerList.add(sneaker)
-        }
-        return sneakerList
-    }
 
     fun mapDomainToEntity(input: Sneakers) = FavoritesEntity(
         id = input.id,

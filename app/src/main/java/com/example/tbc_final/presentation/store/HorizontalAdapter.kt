@@ -13,7 +13,6 @@ class HorizontalAdapter:
         val content = getItem(position)
 
 
-
         binding.apply {
             nameFeatured.text = content.name.toString()
             imageFeatured.setImage(content.mainPictureUrl.toString())
