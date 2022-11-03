@@ -4,11 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.ResultReceiver
 import android.util.Log
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentHomeBinding
 import com.example.tbc_final.service.MotionActivityService
 import com.example.tbc_final.presentation.base.BaseFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -25,6 +31,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private var currentSteps: Int = 0
     private var totalStepsCount:Int = 0
     private var totalPointsCount:Int = 0
+    private lateinit var navController: NavController
+
 
     override fun onBind() {
         subscribeService()
@@ -45,6 +53,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         //TEST LOG OUT BUTTON
+    }
+
+    private fun navigation(){
+        val appBarConfiguration = AppBarConfiguration(navController.graph, binding?.drawerLayout)
+
+
+        val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFragment.navController
+        requireActivity().findViewById<NavigationView>(R.id.fragmentContainerView)
+            .setupWithNavController(navController)
     }
 
 

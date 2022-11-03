@@ -37,7 +37,6 @@ object AppModule {
         .build()
 
 
-    // TODO REPOSITORY PROVIDES -> BINDS()
     @Singleton
     @Provides
     fun provideApi(retrofit: Retrofit): BodyPartApiInterface = retrofit.newBuilder().client(HttpClient.okHttpClient).build().create(BodyPartApiInterface::class.java)
@@ -55,9 +54,4 @@ object AppModule {
         return retrofit.newBuilder().baseUrl("https://api.calorieninjas.com").build().create(NutritionApiInterface::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideStoreRepository(storeApi: StoreApi): StoreRepository {
-        return StoreRepositoryImpl(storeApi)
-    }
 }
