@@ -27,9 +27,11 @@ data class SneakerModel(
 
         fun toSneakers() = Sneakers(
             id = id,
+            storyHtml = storyHtml,
             mainPictureUrl = mainPictureUrl,
             name = name,
-            isFavorite = isFavorite
+            isFavorite = isFavorite,
+            retailPriceCents = retailPriceCents
         )
 
         override val inner: Sneaker

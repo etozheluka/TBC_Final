@@ -15,6 +15,12 @@ data class FavoritesEntity(
     @ColumnInfo(name = "name")
     val name: String?,
 
+    @ColumnInfo(name = "storyHtml")
+    val storyHtml:String?,
+
+    @ColumnInfo(name = "retailPriceCents")
+    val retailPriceCents:Int?,
+
     @ColumnInfo(name = "main_picture_url")
     val mainPictureUrl: String?,
 
@@ -27,7 +33,9 @@ data class FavoritesEntity(
         id = id,
         name = name,
         mainPictureUrl = mainPictureUrl,
-        isFavorite = isFavorite
+        isFavorite = isFavorite,
+        storyHtml = storyHtml,
+        retailPriceCents = retailPriceCents
     )
 
 }

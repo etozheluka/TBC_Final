@@ -7,6 +7,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Sneakers(
     val id: Int?,
+    val storyHtml:String?,
+    val retailPriceCents:Int?,
     val name: String?,
     val mainPictureUrl: String?,
     var isFavorite: Boolean = false,
@@ -27,8 +29,8 @@ data class Sneakers(
             id = id,
             name = name,
             mainPictureUrl = mainPictureUrl,
-            retailPriceCents = null,
-            storyHtml = null,
+            retailPriceCents = retailPriceCents,
+            storyHtml = storyHtml,
             isFavorite = isFavorite,
             category = null
         )
