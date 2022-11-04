@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         installSplashScreen()
         setContentView(view)
-        supportActionBar?.hide()
+    //    supportActionBar?.hide()
 
         setUpNavigation()
 

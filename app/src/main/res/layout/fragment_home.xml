@@ -8,12 +8,10 @@
     tools:context=".presentation.home.HomeFragment"
     >
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/back_png">
-
 
         <View
             android:id="@+id/view4"
@@ -28,11 +26,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/ivMenuIcon"
-            android:background="@drawable/ic_menu"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="16dp"
+            android:layout_height="24dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/ic_menu"
             android:padding="10dp"
             android:tint="@color/black"
             app:layout_constraintDimensionRatio="1"
@@ -294,7 +292,6 @@
         android:layout_gravity="start"
         android:background="@drawable/gradient"
         app:headerLayout="@layout/menu_header"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
