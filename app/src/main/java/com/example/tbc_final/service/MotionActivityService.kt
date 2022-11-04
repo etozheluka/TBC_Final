@@ -183,7 +183,7 @@ class MotionActivityService: Service() {
 
             if (todaySteps > 2000){
                 todaySteps = 0
-                points += 25
+                points += 1
                 runBlocking {
                     putStepUseCase.putStep(todaySteps.toString())
                     putStepUseCase.putPoints(points.toString())
@@ -218,7 +218,6 @@ class MotionActivityService: Service() {
         internal const val KEY_POINTS = "POINTS"
         internal const val KEY_CURRENT = "STEPS_CURRENT"
         internal const val KEY_TOTAL = "TOTAL"
-        private const val KEY_ACTIVE = "ACTIVE"
         private const val FOREGROUND_ID = 1488
         private const val CHANNEL_ID = "com.example.tbc_final.CHANNEL_ID"
     }
