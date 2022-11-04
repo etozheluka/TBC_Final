@@ -35,47 +35,41 @@ import java.util.*
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private lateinit var toggle: ActionBarDrawerToggle
-
     private var currentSteps: Int = 0
     private var totalStepsCount: Int = 0
     private var totalPointsCount: Int = 0
-    private lateinit var navController: NavController
 
 
     override fun onBind() {
+        toCalc()
+        listeners()
         subscribeService()
-
-
         val date =
             SimpleDateFormat(getString(R.string.dateFormat)).format(Calendar.getInstance().time)
         binding?.date?.text = date.toString()
+    }
 
-        toCalc()
-
+    private fun listeners() {
 
         binding?.leftMenu?.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nutritionFragment -> toast("touch")
+                R.id.calculatorFragment -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCalculatorFragment())
+                R.id.favoritesFragment2 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFavoritesFragment2())
+                R.id.nutritionFragment -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNutritionFragment())
             }
             true
         }
 
+        binding?.ivMenuIcon?.setOnClickListener {
+            binding!!.drawerLayout.openDrawer(GravityCompat.START)
+        }
 
-        //TEST LOG OUT BUTTON
         binding?.logOutBtn?.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val i = Intent(requireContext(), MotionActivityService::class.java)
             i.action = MotionActivityService.ACTION_STOP_ACTIVITY
             requireContext().stopService(i)
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLogInFragment())
-        }
-
-        //TEST LOG OUT BUTTON
-
-
-        binding?.ivMenuIcon?.setOnClickListener {
-            binding!!.drawerLayout.openDrawer(GravityCompat.START)
         }
     }
 

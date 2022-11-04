@@ -10,6 +10,7 @@ data class Sneakers(
     val name: String?,
     val mainPictureUrl: String?,
     var isFavorite: Boolean = false,
+
 ): BaseDiff<Sneakers>(),Parcelable{
 
     override val inner: Sneakers
@@ -21,6 +22,16 @@ data class Sneakers(
     override fun compareTo(other: Any?): Boolean {
         return other is Sneakers && this == other
     }
+    fun toSneakerModelSneaker()=
+        SneakerModel.Sneaker(
+            id = id,
+            name = name,
+            mainPictureUrl = mainPictureUrl,
+            retailPriceCents = null,
+            storyHtml = null,
+            isFavorite = isFavorite,
+            category = null
+        )
 }
 
 
