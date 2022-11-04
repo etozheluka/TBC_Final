@@ -1,5 +1,6 @@
 package com.example.tbc_final.domain.model
 
+import com.example.tbc_final.presentation.base.BaseDiff
 import com.squareup.moshi.Json
 
 data class NutritionModel(
@@ -29,6 +30,16 @@ data class NutritionModel(
         @Json(name = "protein_g")
         val ProteinGrams: Double?,
         @Json(name = "carbohydrates_total_g")
-        val CarbohydratesTotalGrams: Double?
-    )
+        val CarbohydratesTotalGrams: Double?,
+
+    ): BaseDiff<Item>(){
+        override val inner: Item
+            get() = this
+        override val uniqueValue: Any
+            get() = Name ?: ""
+
+        override fun compareTo(other: Any?): Boolean {
+            return other is Item && this == other
+        }
+    }
 }

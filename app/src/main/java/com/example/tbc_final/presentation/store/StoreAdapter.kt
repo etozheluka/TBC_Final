@@ -2,8 +2,7 @@ package com.example.tbc_final.presentation.store
 
 import com.example.tbc_final.databinding.StoreItemLayoutBinding
 import com.example.tbc_final.domain.model.SneakerModel
-import com.example.tbc_final.presentation.adapter.base.BaseAdapter
-import com.example.tbc_final.presentation.excercises.ExerciseAdapter
+import com.example.tbc_final.presentation.base.BaseAdapter
 import com.example.tbc_final.utils.extensions.setImage
 
 class StoreAdapter : BaseAdapter<SneakerModel.Sneaker, StoreItemLayoutBinding>(StoreItemLayoutBinding::inflate) {
@@ -15,7 +14,6 @@ class StoreAdapter : BaseAdapter<SneakerModel.Sneaker, StoreItemLayoutBinding>(S
         val currentItem = currentList[position]
         binding.apply {
             shoeNameTV.text = content.name
-            itemCostTV.text = content.retailPriceCents.toString()
             shoesImageView.setImage(content.mainPictureUrl!!)
             this.root.setOnClickListener { itemClick?.invoke(currentItem) }
         }

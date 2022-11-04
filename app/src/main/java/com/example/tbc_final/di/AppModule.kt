@@ -54,9 +54,4 @@ object AppModule {
         return retrofit.newBuilder().baseUrl("https://api.calorieninjas.com").build().create(NutritionApiInterface::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideStoreRepository(storeApi: StoreApi): StoreRepository {
-        return StoreRepositoryImpl(storeApi)
-    }
 }
