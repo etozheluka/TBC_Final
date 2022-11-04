@@ -41,7 +41,7 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(FragmentStoreBinding::i
                     }
                     Resource.Status.SUCCESS -> {
                         binding?.progressBar?.visibility = View.GONE
-                     //   storeViewModel.filterHorizontal(it.data?.sneakers, horizontalAdapter)
+                        storeViewModel.filterHorizontal(it.data?.sneakers, horizontalAdapter)
                         storeAdapter.submitList(it.data?.sneakers)
                         setUpSearchBar(it.data?.sneakers)
                         binding?.searchEditText?.text?.clear()
@@ -88,7 +88,7 @@ class StoreFragment : BaseFragment<FragmentStoreBinding>(FragmentStoreBinding::i
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-              //  storeViewModel.filter(p0.toString(), data, storeAdapter)
+                storeViewModel.filter(p0.toString(), data, storeAdapter)
             }
 
 

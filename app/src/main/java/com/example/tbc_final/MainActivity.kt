@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.storeFragment -> navView.visibility = View.VISIBLE
                 R.id.BodyPartFragment -> navView.visibility = View.VISIBLE
                 R.id.orderFragment -> navView.visibility = View.GONE
+                R.id.favoritesFragment2 -> navView.visibility = View.VISIBLE
             }
         }
 
