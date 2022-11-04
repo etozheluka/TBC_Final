@@ -59,6 +59,10 @@
     <string name="nutr">Nutrition</string>
     <string name="nutrition">Nutrition</string>
     <string name="exercises">Exercises</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="enter_your_phone">Enter your phone</string>
+    <string name="get_otp">Get OTP</string>
     <string name="upper_legs">Upper Legs</string>
     <string name="sneaker_shop">Sneaker Shop</string>
     <string name="featured_sneakers">Featured Sneakers :</string>

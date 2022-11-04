@@ -1,6 +1,5 @@
 package com.example.tbc_final.data.remote.okhttp
 
-import android.content.Context
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 

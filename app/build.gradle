@@ -103,6 +103,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:21.1.1'
     implementation 'com.google.firebase:firebase-firestore:24.4.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
     implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1"
@@ -110,4 +111,7 @@ dependencies {
     //navigation components
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+    //
+    implementation 'com.google.android.gms:play-services-safetynet:17.0.1'
 }

@@ -63,10 +63,11 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.logInFragment -> navView.visibility = View.GONE
                 R.id.exerciseFragment -> navView.visibility = View.GONE
-                R.id.calculatorFragment -> navView.visibility = View.GONE
+                R.id.calculatorFragment -> navView.visibility = View.VISIBLE
                 R.id.homeFragment -> navView.visibility = View.VISIBLE
                 R.id.storeFragment -> navView.visibility = View.VISIBLE
                 R.id.BodyPartFragment -> navView.visibility = View.VISIBLE
+                R.id.otpFragment -> navView.visibility = View.GONE
                 R.id.orderFragment -> navView.visibility = View.GONE
                 R.id.favoritesFragment2 -> navView.visibility = View.VISIBLE
             }

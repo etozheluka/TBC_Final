@@ -143,6 +143,9 @@
         <argument android:name="item"
             app:argType="com.example.tbc_final.domain.model.SneakerModel$Sneaker" />
         <action
+            android:id="@+id/action_orderFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+        <action
             android:id="@+id/action_orderFragment_to_storeFragment"
             app:destination="@id/storeFragment"
             app:enterAnim="@anim/back_anim" />
@@ -153,6 +156,23 @@
         android:name="com.example.tbc_final.presentation.nutrition.NutritionFragment"
         android:label="fragment_nutrition"
         tools:layout="@layout/fragment_nutrition" />
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.tbc_final.presentation.store.OtpFragment"
+        android:label="OtpFragment" >
+        <action
+            android:id="@+id/action_otpFragment_to_orderFinishFragment"
+            app:destination="@id/orderFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFinishFragment"
+        android:name="com.example.tbc_final.presentation.store.OrderFinishFragment"
+        android:label="fragment_order_finish"
+        tools:layout="@layout/fragment_order_finish" >
+        <action
+            android:id="@+id/action_orderFinishFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment2"
         android:name="com.example.tbc_final.presentation.favorites.FavoritesFragment"
