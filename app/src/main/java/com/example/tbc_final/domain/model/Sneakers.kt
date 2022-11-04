@@ -7,9 +7,12 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Sneakers(
     val id: Int?,
+    val storyHtml:String?,
+    val retailPriceCents:Int?,
     val name: String?,
     val mainPictureUrl: String?,
     var isFavorite: Boolean = false,
+
 ): BaseDiff<Sneakers>(),Parcelable{
 
     override val inner: Sneakers
@@ -21,6 +24,16 @@ data class Sneakers(
     override fun compareTo(other: Any?): Boolean {
         return other is Sneakers && this == other
     }
+    fun toSneakerModelSneaker()=
+        SneakerModel.Sneaker(
+            id = id,
+            name = name,
+            mainPictureUrl = mainPictureUrl,
+            retailPriceCents = retailPriceCents,
+            storyHtml = storyHtml,
+            isFavorite = isFavorite,
+            category = null
+        )
 }
 
 

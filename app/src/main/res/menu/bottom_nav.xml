@@ -9,10 +9,6 @@
         android:id="@+id/BodyPartFragment"
         android:icon="@drawable/cup"
         android:title="@string/exercises" />
-    <item
-        android:id="@+id/nutritionFragment"
-        android:icon="@drawable/ic_food"
-        android:title="@string/nutrition" />
 
     <item
         android:id="@+id/storeFragment"

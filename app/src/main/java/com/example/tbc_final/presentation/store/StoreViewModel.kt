@@ -15,40 +15,9 @@ class StoreViewModel @Inject constructor(private val storeRepository: StoreRepos
     private val _storeFlow = MutableSharedFlow<Resource<SneakerModel>>()
     val storeFlow get() = _storeFlow.asSharedFlow()
 
-
-
     suspend fun getItems(){
         storeRepository.getStoreItems().collect{
             _storeFlow.emit(it)
         }
-    }
-
-    fun filter(text: String, data: List<SneakerModel.Sneaker?>?,adapter: StoreAdapter) {
-
-
-        val filteredStore = ArrayList<SneakerModel.Sneaker?>()
-
-        data?.filterTo(filteredStore) { item ->
-            item?.name?.lowercase()?.contains(text.lowercase()) ?: true
-        }
-
-        adapter.submitList(filteredStore)
-
-
-    }
-    fun filterHorizontal( data: List<SneakerModel.Sneaker?>?,adapter: HorizontalAdapter) {
-
-
-        val filteredStore = ArrayList<SneakerModel.Sneaker?>()
-
-        data?.filterTo(filteredStore) { item ->
-            item?.category?.contains(RUNNING) ?: true
-        }
-
-        adapter.submitList(filteredStore)
-    }
-
-    companion object{
-        const val RUNNING ="running"
     }
 }

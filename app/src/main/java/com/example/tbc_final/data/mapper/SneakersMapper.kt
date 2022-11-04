@@ -12,7 +12,9 @@ object SneakersMapper {
                 id = it.id,
                 name = it.name,
                 mainPictureUrl = it.mainPictureUrl,
-                isFavorite = it.isFavorite
+                isFavorite = it.isFavorite,
+                storyHtml = it.storyHtml,
+                retailPriceCents = it.retailPriceCents
             )
         }
     }
@@ -22,7 +24,9 @@ object SneakersMapper {
         id = input.id,
         isFavorite = input.isFavorite,
         name = input.name,
-        mainPictureUrl = input.mainPictureUrl
+        mainPictureUrl = input.mainPictureUrl,
+        storyHtml = input.storyHtml,
+        retailPriceCents = input.retailPriceCents
 
     )
 

@@ -3,9 +3,11 @@ package com.example.tbc_final.presentation.favorites
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tbc_final.databinding.FragmentFavoritesBinding
 import com.example.tbc_final.presentation.base.BaseFragment
+import com.example.tbc_final.presentation.store.StoreFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -40,8 +42,14 @@ class FavoritesFragment :
             layoutManager = GridLayoutManager(context, 2)
         }
 
+
+        favoritesAdapter.itemClick = {
+            findNavController().navigate(
+                FavoritesFragmentDirections.actionFavoritesFragment2ToOrderFragment(it.toSneakerModelSneaker())
+            )
+
+        }
+
+
     }
-
-
-
 }

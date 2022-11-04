@@ -7,6 +7,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.tbc_final.R
 import com.example.tbc_final.databinding.FragmentOrderBinding
 import com.example.tbc_final.domain.model.SneakerModel
+import com.example.tbc_final.domain.model.Sneakers
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.example.tbc_final.utils.extensions.setImage
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(FragmentOrderBinding::i
         setData(item)
         onClickListeners()
         initObserver()
+
 
     }
 
