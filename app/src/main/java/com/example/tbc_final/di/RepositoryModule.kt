@@ -6,11 +6,13 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.example.tbc_final.data.remote.service.StoreApi
+import com.example.tbc_final.data.repository.local.FavoritesRepositoryImpl
 
 import com.example.tbc_final.data.repository.remote.BodyPartRepositoryImpl
 import com.example.tbc_final.data.repository.local.StepPreferencesRepositoryImpl
 import com.example.tbc_final.data.repository.remote.NutritionRepositoryImpl
 import com.example.tbc_final.data.repository.remote.StoreRepositoryImpl
+import com.example.tbc_final.domain.repository.local.FavoritesRepository
 import com.example.tbc_final.domain.repository.remote.BodyPartRepository
 import com.example.tbc_final.domain.repository.local.StepPreferencesRepository
 import com.example.tbc_final.domain.repository.remote.NutritionRepository
@@ -45,6 +47,12 @@ abstract class RepositoryModule {
     abstract fun bindNutritionRepository(
         nutritionRepositoryImpl: NutritionRepositoryImpl
     ): NutritionRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindFavoritesRepository(
+        favoritesRepositoryImpl: FavoritesRepositoryImpl
+    ): FavoritesRepository
 
 
     @Binds

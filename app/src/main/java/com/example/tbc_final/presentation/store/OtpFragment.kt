@@ -38,6 +38,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
             } else {
                 val phone = GEO + binding?.idEdtPhoneNumber?.text.toString()
                 otpViewModel.sendVerificationCode(phone, requireActivity(), mCallBack)
+                binding?.progressBar?.visibility = View.VISIBLE
 
             }
         }
@@ -90,6 +91,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
             ) {
                 super.onCodeSent(p0, p1)
                 verificationId = p0
+                binding?.progressBar?.visibility = View.GONE
                 binding?.apply {
                     back.visibility = View.VISIBLE
                     idEdtPhoneNumber.visibility = View.GONE
