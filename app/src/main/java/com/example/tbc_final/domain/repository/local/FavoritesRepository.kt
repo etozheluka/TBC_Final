@@ -8,7 +8,7 @@ interface FavoritesRepository {
 
     suspend fun insertFavoriteSneaker(sneakers: Sneakers)
 
-    suspend fun deleteFavoriteManga(sneakers: Sneakers)
+    suspend fun deleteFavoriteSneaker(sneakers: Sneakers)
 
     suspend fun searchFavoriteSneaker(id: Int): Sneakers?
 

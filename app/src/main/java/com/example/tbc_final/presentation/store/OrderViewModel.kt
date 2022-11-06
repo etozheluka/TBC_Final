@@ -41,7 +41,7 @@ class OrderViewModel @Inject constructor(
 
     suspend fun removeFromFavorites() {
         try {
-            favoritesRepository.deleteFavoriteManga(
+            favoritesRepository.deleteFavoriteSneaker(
                 stateHandler.get<SneakerModel.Sneaker>("item")!!.toSneakers()
             )
         } catch (e: Exception) {

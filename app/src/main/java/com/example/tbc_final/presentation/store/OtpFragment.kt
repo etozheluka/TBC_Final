@@ -9,6 +9,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.databinding.FragmentOtpBinding
 import com.example.tbc_final.presentation.base.BaseFragment
+import com.example.tbc_final.utils.extensions.goAway
+import com.example.tbc_final.utils.extensions.hide
+import com.example.tbc_final.utils.extensions.show
 import com.example.tbc_final.utils.extensions.toast
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -91,13 +94,13 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(FragmentOtpBinding::inflate
             ) {
                 super.onCodeSent(p0, p1)
                 verificationId = p0
-                binding?.progressBar?.visibility = View.GONE
                 binding?.apply {
-                    back.visibility = View.VISIBLE
-                    idEdtPhoneNumber.visibility = View.GONE
-                    idBtnGetOtp.visibility = View.GONE
-                    idEdtOtp.visibility = View.VISIBLE
-                    idBtnVerify.visibility = View.VISIBLE
+                    progressBar.hide()
+                    back.show()
+                    idEdtPhoneNumber.goAway()
+                    idBtnGetOtp.goAway()
+                    idEdtOtp.show()
+                    idBtnVerify.show()
 
                 }
 

@@ -16,10 +16,10 @@ data class FavoritesEntity(
     val name: String?,
 
     @ColumnInfo(name = "storyHtml")
-    val storyHtml:String?,
+    val storyHtml: String?,
 
     @ColumnInfo(name = "retailPriceCents")
-    val retailPriceCents:Int?,
+    val retailPriceCents: Int?,
 
     @ColumnInfo(name = "main_picture_url")
     val mainPictureUrl: String?,
@@ -27,15 +27,13 @@ data class FavoritesEntity(
     @ColumnInfo(name = "is_favorite")
     var isFavorite: Boolean = false
 
-) {
+)
 
-    fun toSneaker() = Sneakers(
-        id = id,
-        name = name,
-        mainPictureUrl = mainPictureUrl,
-        isFavorite = isFavorite,
-        storyHtml = storyHtml,
-        retailPriceCents = retailPriceCents
-    )
-
-}
+fun FavoritesEntity.toSneaker() = Sneakers(
+    id = id,
+    name = name,
+    mainPictureUrl = mainPictureUrl,
+    isFavorite = isFavorite,
+    storyHtml = storyHtml,
+    retailPriceCents = retailPriceCents
+)

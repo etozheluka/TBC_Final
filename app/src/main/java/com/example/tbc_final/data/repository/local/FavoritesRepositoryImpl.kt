@@ -1,5 +1,6 @@
 package com.example.tbc_final.data.repository.local
 
+import com.example.tbc_final.data.local.entity.toSneaker
 import com.example.tbc_final.data.local.localsource.SneakersLocalDataSource
 import com.example.tbc_final.domain.repository.local.FavoritesRepository
 import com.example.tbc_final.data.mapper.SneakersMapper
@@ -19,7 +20,7 @@ class FavoritesRepositoryImpl @Inject constructor(
         return dataSource.insertFavoriteSneaker(SneakersMapper.mapDomainToEntity(sneakers))
     }
 
-    override suspend fun deleteFavoriteManga(sneakers: Sneakers) {
+    override suspend fun deleteFavoriteSneaker(sneakers: Sneakers) {
         return dataSource.deleteFavoriteSneaker(SneakersMapper.mapDomainToEntity(sneakers))
     }
 
