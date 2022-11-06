@@ -42,6 +42,7 @@ class BodyPartAdapter:RecyclerView.Adapter<BodyPartAdapter.ViewHolder>() {
             currentItem = content[adapterPosition]
             binding.apply {
                 bodyPart.text = currentItem.bodyPart
+                bodyPartIc.setImageResource(currentItem.icon)
                 root.setOnClickListener {
                     onClick(
                         currentItem

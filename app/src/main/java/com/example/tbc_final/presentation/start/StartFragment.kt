@@ -1,4 +1,4 @@
-package com.example.tbc_final.presentation.main
+package com.example.tbc_final.presentation.start
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -7,7 +7,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.tbc_final.databinding.FragmentStartBinding
-import com.example.tbc_final.presentation.auth.login.LogInFragmentDirections
 import com.example.tbc_final.presentation.base.BaseFragment
 import com.google.firebase.auth.FirebaseAuth
 

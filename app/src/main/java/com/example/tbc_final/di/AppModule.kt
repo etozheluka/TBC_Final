@@ -39,24 +39,23 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit): BodyPartApiInterface = retrofit.newBuilder().client(HttpClient.okHttpClient).build().create(BodyPartApiInterface::class.java)
+    fun provideApi(retrofit: Retrofit): BodyPartApiInterface =
+        retrofit.newBuilder().client(HttpClient.okHttpClient).build()
+            .create(BodyPartApiInterface::class.java)
 
 
     @Provides
     @Singleton
     fun provideStoreApi(retrofit: Retrofit): StoreApi {
-        return retrofit.newBuilder().baseUrl("https://run.mocky.io/v3/").build().create(StoreApi::class.java)
+        return retrofit.newBuilder().baseUrl("https://run.mocky.io/v3/").build()
+            .create(StoreApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideNutritionApi(retrofit: Retrofit):NutritionApiInterface {
-        return retrofit.newBuilder().baseUrl("https://api.calorieninjas.com").build().create(NutritionApiInterface::class.java)
+    fun provideNutritionApi(retrofit: Retrofit): NutritionApiInterface {
+        return retrofit.newBuilder().baseUrl("https://api.calorieninjas.com").build()
+            .create(NutritionApiInterface::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideStoreRepository(storeApi: StoreApi): StoreRepository {
-        return StoreRepositoryImpl(storeApi)
-    }
 }

@@ -31,11 +31,11 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MotionActivityService: Service() {
+class MotionActivityService : Service() {
     private var todaySteps: Int = 0
     private var totalSteps: Int = 0
     private var currentSteps: Int = 0
-    private var session:Int = 0
+    private var session: Int = 0
     private var lastSteps = -1
     private var points: Int = 0
     private var receiver: ResultReceiver? = null
@@ -43,13 +43,13 @@ class MotionActivityService: Service() {
     private lateinit var notificationManager: NotificationManager
     private lateinit var notificationBuilder: NotificationCompat.Builder
     private var motionUpdateService: SparseArray<MotionUpdateService> = SparseArray()
-    private var motionUpdateServiceId = 0
-
     private val job = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.Main + job)
 
+
     @Inject
     lateinit var getStepUseCase: GetStepUseCase
+
     @Inject
     lateinit var putStepUseCase: PutStepUseCase
 
@@ -70,16 +70,12 @@ class MotionActivityService: Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent != null){
+        if (intent != null) {
             when (intent.action) {
                 ACTION_SUBSCRIBE -> receiver = intent.getParcelableExtra(
-                    RECEIVER_TAG)
-                ACTION_START_ACTIVITY -> {
-                    val id = motionUpdateServiceId++
-                    motionUpdateService.put(id, MotionUpdateService(id, currentSteps))
-                }
+                    RECEIVER_TAG
+                )
                 ACTION_STOP_ACTIVITY -> motionUpdateService.remove(intent.getIntExtra(KEY_ID, 0))
-                ACTION_TOGGLE_ACTIVITY -> motionUpdateService.get(intent.getIntExtra(KEY_ID, 0)).toggle()
             }
             sendUpdate()
         }
@@ -89,14 +85,14 @@ class MotionActivityService: Service() {
     private fun setUpSensor() {
 
         scope.launch {
-            todaySteps =  getStepUseCase.getStep().getOrNull()?.toInt() ?: 0
-            totalSteps = getStepUseCase.getTotalStep().getOrNull()?.toInt() ?:0
+            todaySteps = getStepUseCase.getStep().getOrNull()?.toInt() ?: 0
+            totalSteps = getStepUseCase.getTotalStep().getOrNull()?.toInt() ?: 0
             points = getStepUseCase.getPoints().getOrNull()?.toInt() ?: 0
         }
 
 
-
-        val sensorManager = getSystemService(Context.SENSOR_SERVICE) as? SensorManager ?: throw IllegalStateException(getString(R.string.service_error))
+        val sensorManager = getSystemService(Context.SENSOR_SERVICE) as? SensorManager
+            ?: throw IllegalStateException(getString(R.string.service_error))
         val stepSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
         sensorListener = object : SensorEventListener {
 
@@ -109,16 +105,22 @@ class MotionActivityService: Service() {
         }
 
         if (stepSensor != null) {
-            sensorManager.registerListener(sensorListener, stepSensor, SensorManager.SENSOR_DELAY_FASTEST)
+            sensorManager.registerListener(
+                sensorListener,
+                stepSensor,
+                SensorManager.SENSOR_DELAY_FASTEST
+            )
         } else {
             Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun setUpService() {
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager ?: throw java.lang.IllegalStateException(getString(R.string.service_error))
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager
+            ?: throw java.lang.IllegalStateException(getString(R.string.service_error))
         val notificationIntent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent =
+            PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel()
@@ -139,7 +141,8 @@ class MotionActivityService: Service() {
             val notificationChannel = NotificationChannel(
                 CHANNEL_ID,
                 getString(R.string.app_name),
-                NotificationManager.IMPORTANCE_NONE)
+                NotificationManager.IMPORTANCE_NONE
+            )
 
             notificationChannel.description = getString(R.string.steps)
 
@@ -147,7 +150,7 @@ class MotionActivityService: Service() {
         }
     }
 
-    private fun eventHandler(value:Int){
+    private fun eventHandler(value: Int) {
         currentSteps = value
         if (lastSteps == -1) {
             lastSteps = value
@@ -175,15 +178,21 @@ class MotionActivityService: Service() {
         sendUpdate()
     }
 
-    private fun sendUpdate(){
-        notificationBuilder.setContentText(String.format(Locale.getDefault(),getString(R.string.steps_format),todaySteps))
+    private fun sendUpdate() {
+        notificationBuilder.setContentText(
+            String.format(
+                Locale.getDefault(),
+                getString(R.string.steps_format),
+                todaySteps
+            )
+        )
         notificationManager.notify(FOREGROUND_ID, notificationBuilder.build())
         receiver?.let {
             val bundle = Bundle()
 
-            if (todaySteps > 2000){
+            if (todaySteps > 2000) {
                 todaySteps = 0
-                points += 25
+                points += 1
                 runBlocking {
                     putStepUseCase.putStep(todaySteps.toString())
                     putStepUseCase.putPoints(points.toString())
@@ -191,13 +200,13 @@ class MotionActivityService: Service() {
                 bundle.putInt(KEY_STEPS, todaySteps)
                 bundle.putInt(KEY_POINTS, points)
 
-            }else{
+            } else {
                 bundle.putInt(KEY_POINTS, points)
                 bundle.putInt(KEY_STEPS, todaySteps)
 
             }
-            bundle.putInt(KEY_TOTAL,totalSteps)
-            bundle.putInt(KEY_CURRENT,session)
+            bundle.putInt(KEY_TOTAL, totalSteps)
+            bundle.putInt(KEY_CURRENT, session)
             for (i in 0 until motionUpdateService.size()) {
                 val motionActivity = motionUpdateService.valueAt(i)
                 val activityBundle = Bundle()
@@ -208,17 +217,14 @@ class MotionActivityService: Service() {
         }
     }
 
-    companion object{
+    companion object {
         internal const val ACTION_SUBSCRIBE = "ACTION_SUBSCRIBE"
-        private const val ACTION_START_ACTIVITY = "ACTION_START_ACTIVITY"
         internal const val ACTION_STOP_ACTIVITY = "ACTION_STOP_ACTIVITY"
-        internal const val ACTION_TOGGLE_ACTIVITY = "ACTION_TOGGLE_ACTIVITY"
         private const val KEY_ID = "ID"
         internal const val KEY_STEPS = "STEPS"
         internal const val KEY_POINTS = "POINTS"
         internal const val KEY_CURRENT = "STEPS_CURRENT"
         internal const val KEY_TOTAL = "TOTAL"
-        private const val KEY_ACTIVE = "ACTIVE"
         private const val FOREGROUND_ID = 1488
         private const val CHANNEL_ID = "com.example.tbc_final.CHANNEL_ID"
     }

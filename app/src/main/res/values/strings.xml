@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">TBC_Final</string>
+    <string name="app_name">Fit Tracker</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="steps">Steps</string>
     <string name="service_error">Service Error</string>
@@ -53,8 +55,29 @@
     <string name="height">Height</string>
     <string name="product">Product :</string>
     <string name="product_">Product</string>
-    <string name="digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ </string>
     <string name="nutr">Nutrition</string>
     <string name="nutrition">Nutrition</string>
     <string name="exercises">Exercises</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="enter_your_phone">Enter your phone</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="upper_legs">Upper Legs</string>
+    <string name="sneaker_shop">Sneaker Shop</string>
+    <string name="featured_sneakers">Featured Sneakers :</string>
+    <string name="our_products">Our Products:</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non arcu vitae leo tincidunt dictum at at risus. Integer et tincidunt est. Sed eu ipsum sem. Aliquam nec elementum lacus. Aenean quis varius nibh. Sed id ornare nunc. Morbi sagittis ultricies felis id malesuada. Nam molestie quis est eget malesuada.
+
+Suspendisse euismod arcu ac nisi molestie, iaculis malesuada nisl aliquet. Mauris hendrerit tincidunt arcu, vitae vestibulum metus ultricies ac. Morbi feugiat ullamcorper neque et tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus sed cursus nunc. Morbi porttitor egestas odio, in pharetra ipsum tincidunt quis. Nunc id convallis ligula. Sed feugiat justo at lacus vehicula sollicitudin eu sit amet mauris. Integer ullamcorper lectus erat, sed vulputate turpis volutpat tristique. Nulla ornare ullamcorper pellentesque. Cras condimentum neque in sem viverra ornare. Suspendisse sit amet iaculis augue. Quisque pulvinar, ex vitae venenatis molestie, sapien eros fringilla ligula, nec dignissim augue ligula in felis.</string>
+    <string name="order">order</string>
+    <string name="_16000">16000 $</string>
+    <string name="nike_air_force_1">NIKE Air Force 1</string>
+    <string name="favorites">Favorites</string>
+    <string name="today">Today</string>
+    <string name="current_session">Current Session</string>
+    <string name="welcome_to_nfittracker">Welcome to \nFit Tracker</string>
+    <string name="example_example_com">example@example.com</string>
+    <string name="log_out">Log Out</string>
+    <string name="ibm">IBM Calculator</string>
 </resources>
