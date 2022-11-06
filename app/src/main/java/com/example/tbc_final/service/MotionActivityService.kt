@@ -43,9 +43,9 @@ class MotionActivityService : Service() {
     private lateinit var notificationManager: NotificationManager
     private lateinit var notificationBuilder: NotificationCompat.Builder
     private var motionUpdateService: SparseArray<MotionUpdateService> = SparseArray()
-
     private val job = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.Main + job)
+
 
     @Inject
     lateinit var getStepUseCase: GetStepUseCase

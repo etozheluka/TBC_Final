@@ -11,6 +11,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.tbc_final.databinding.ActivityMainBinding
+import com.example.tbc_final.utils.extensions.goAway
+import com.example.tbc_final.utils.extensions.show
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         val controller = findNavController(R.id.fragmentContainerView)
         navView = binding.bottomNavigation
-        navView.visibility = View.GONE
+        navView.goAway()
 
 
         val appBarConfig = AppBarConfiguration(
@@ -61,15 +63,15 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.logInFragment -> navView.visibility = View.GONE
-                R.id.exerciseFragment -> navView.visibility = View.GONE
-                R.id.calculatorFragment -> navView.visibility = View.VISIBLE
-                R.id.homeFragment -> navView.visibility = View.VISIBLE
-                R.id.storeFragment -> navView.visibility = View.VISIBLE
-                R.id.BodyPartFragment -> navView.visibility = View.VISIBLE
-                R.id.otpFragment -> navView.visibility = View.GONE
-                R.id.orderFragment -> navView.visibility = View.GONE
-                R.id.favoritesFragment2 -> navView.visibility = View.VISIBLE
+                R.id.logInFragment -> navView.goAway()
+                R.id.exerciseFragment -> navView.goAway()
+                R.id.calculatorFragment -> navView.show()
+                R.id.homeFragment -> navView.show()
+                R.id.storeFragment -> navView.show()
+                R.id.BodyPartFragment -> navView.show()
+                R.id.otpFragment -> navView.goAway()
+                R.id.orderFragment -> navView.goAway()
+                R.id.favoritesFragment2 -> navView.show()
             }
         }
 
