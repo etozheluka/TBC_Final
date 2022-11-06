@@ -76,7 +76,7 @@ Suspendisse euismod arcu ac nisi molestie, iaculis malesuada nisl aliquet. Mauri
     <string name="favorites">Favorites</string>
     <string name="today">Today</string>
     <string name="current_session">Current Session</string>
-    <string name="welcome_to_nfittracker">Welcome to \nFitTracker</string>
+    <string name="welcome_to_nfittracker">Welcome to \nFit Tracker</string>
     <string name="example_example_com">example@example.com</string>
     <string name="log_out">Log Out</string>
     <string name="ibm">IBM Calculator</string>
